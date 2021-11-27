@@ -64,15 +64,11 @@ const Layout = ({ children, hideHeaderFooter = false }) => {
     <div className={styles.layoutContainer}>
       <Helmet {...helmetSettings} />
 
-      {!hideHeaderFooter && 
-        <Nav />
-      }
+      {!hideHeaderFooter && <Nav />}
 
       <Main>{children}</Main>
-      
-      {!hideHeaderFooter && 
-        <Footer />
-      }
+
+      {!hideHeaderFooter && <Footer />}
     </div>
   );
 };

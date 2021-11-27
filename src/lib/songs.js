@@ -3,11 +3,7 @@ import { getApolloClient } from 'lib/apollo-client';
 import { updateUserAvatar } from 'lib/users';
 import { sortObjectsByDate } from 'lib/datetime';
 
-import {
-  QUERY_ALL_SONGS,
-  QUERY_SONG_BY_SLUG,
-  QUERY_SONG_SEO_BY_SLUG,
-} from 'data/songs';
+import { QUERY_ALL_SONGS, QUERY_SONG_BY_SLUG, QUERY_SONG_SEO_BY_SLUG } from 'data/songs';
 
 /**
  * songPathBySlug
