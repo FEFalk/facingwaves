@@ -1,0 +1,33 @@
+@import "styles/settings/__settings";
+
+.songBackgroundContainer{
+    background: #1b1b1b;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.songBackgroundImage{
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    filter: blur(25px);
+    height: 100%;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transform: translateZ(0);
+    width: 100%;
+    z-index: 1;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.songBackgroundBackdrop{
+    background: #1b1b1b;
+    height: 50px;
+    overflow: auto;
+}

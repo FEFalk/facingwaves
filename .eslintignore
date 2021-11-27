@@ -1,4 +1,7 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+LICENSE
+README.md
 
 # dependencies
 /node_modules
@@ -33,11 +36,12 @@ yarn-error.log*
 # vercel
 .vercel
 
-public/wp-search.json
-public/feed.xml
-public/sitemap.xml
-public/robots.txt
-public/images/og
+yarn.lock
+.prettierignore
+.gitignore
+.eslintignore
 
-# VSCode settings
-.vscode/
+
+public
+
+.all-contributorsrc
