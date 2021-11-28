@@ -13,19 +13,16 @@ const SongCard = ({ song, className }) => {
 
   function handleClick(e) {
     e.preventDefault();
-    console.log('You clicked submit.');
     var accessToken =
       'EAAGKlFhRTrEBAE6YfOZBVxvlDKPZC00IZBPpUsK4pwUBovFSop2f5CZBUayGlf4PbtciJGYaHZCCFJGl5GmifmyKTEGdl3lMMTEZCZCI0HDKQlTedXidEZBLo6CMVRfDaeAVu1eeujQjqCHSeOZBeG2WVVMM8jw072ROcl5roY7vJ6HO9XBmDBY7o';
     var url = 'https://graph.facebook.com/v5.0/200487122108225/events?access_token=' + accessToken;
     var fbpCookie = getCookie('_fbp');
-    console.log(fbpCookie);
-    console.log(document.cookie);
 
     const postBody = {
       data: [
         {
           event_name: 'ViewContent',
-          event_time: Date.now(),
+          event_time: Math.floor(Date.now() / 1000),
           action_source: 'website',
           event_source_url: window.location.href,
           user_data: {
@@ -41,17 +38,12 @@ const SongCard = ({ song, className }) => {
       },
       body: JSON.stringify(postBody),
     };
-    console.log(postBody);
-    console.log(requestMetadata);
 
-    fetch(url, requestMetadata)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+    fetch(url, requestMetadata).then((res) => res.json());
+
+    window.location.href = song.song.spotifyUrl;
   }
 
-  console.log(song);
   containerClassName.addIf(className, className);
   return (
     <div className={containerClassName.toString()}>
@@ -74,13 +66,13 @@ const SongCard = ({ song, className }) => {
           />
           <span className={styles.songCardArtistName}>Facing Waves</span>
         </div>
-        <div className={styles.songCardLinkItem}>
+        <button className={styles.songCardLinkItem} onClick={handleClick}>
           <img className={styles.songCardStreamingLogo} src={'/images/spotify-logo-green.png'} />
-          <button className={styles.songCardPlay} onClick={handleClick}>
+          <div className={styles.songCardPlay}>
             <i className={styles.songCardPlayIcon}></i>
             <span className={styles.songCardPlayText}>Play</span>
-          </button>
-        </div>
+          </div>
+        </button>
       </div>
     </div>
   );

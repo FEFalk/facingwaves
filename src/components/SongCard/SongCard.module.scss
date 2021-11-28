@@ -55,6 +55,22 @@
   justify-content: space-between;
   padding: 2rem;
   width: 100%;
+  background-color: #1d1d1d;
+  border: 0;
+  color: white;
+  align-items: center;
+  cursor: pointer;
+  transition: ease-in-out 0.1s all;
+
+  &:hover{
+    background-color: #212121;
+    .songCardPlayIcon{
+      border-left: 16px solid #00d95a;
+    }
+    .songCardPlayText{
+      color:#00d95a;
+    }
+  }
 }
 
 .songCardPlay{
@@ -62,18 +78,21 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  
 }
 
 .songCardPlayIcon{
   display: block;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-left: 8px solid #ffffff;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  border-left: 16px solid #ffffff;
+  transition: ease-in-out 0.1s all;
 }
 
 .songCardPlayText{
   margin-left: 0.5rem;
-  font-size: 12px;
+  font-size: 20px;
   text-transform: uppercase;
   letter-spacing: 2px;
+  transition: ease-in-out 0.1s all;
 }
