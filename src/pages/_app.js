@@ -1,4 +1,6 @@
 import NextApp from 'next/app';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 import { SiteContext, useSiteContext } from 'hooks/use-site';
 import { SearchProvider } from 'hooks/use-search';
@@ -20,6 +22,21 @@ function App({ Component, pageProps = {}, metadata, recentPosts, categories, men
     categories,
     menus,
   });
+
+  const router = useRouter();
+
+  useEffect(() => {
+    import('react-facebook-pixel')
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init('648569532838418'); // facebookPixelId
+        ReactPixel.pageView();
+
+        router.events.on('routeChangeComplete', () => {
+          ReactPixel.pageView();
+        });
+      });
+  }, [router.events]);
 
   return (
     <SiteContext.Provider value={site}>
