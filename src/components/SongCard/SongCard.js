@@ -13,6 +13,13 @@ const SongCard = ({ song, className }) => {
 
   function handleClick(e) {
     e.preventDefault();
+    import('react-facebook-pixel')
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init('200487122108225'); // facebookPixelId
+        ReactPixel.track('ViewContent');
+      });
+
     var accessToken =
       'EAAGKlFhRTrEBAE6YfOZBVxvlDKPZC00IZBPpUsK4pwUBovFSop2f5CZBUayGlf4PbtciJGYaHZCCFJGl5GmifmyKTEGdl3lMMTEZCZCI0HDKQlTedXidEZBLo6CMVRfDaeAVu1eeujQjqCHSeOZBeG2WVVMM8jw072ROcl5roY7vJ6HO9XBmDBY7o';
     var url = 'https://graph.facebook.com/v5.0/200487122108225/events?access_token=' + accessToken;
@@ -43,7 +50,6 @@ const SongCard = ({ song, className }) => {
 
     window.location.href = song.song.spotifyUrl;
   }
-
   containerClassName.addIf(className, className);
   return (
     <div className={containerClassName.toString()}>
