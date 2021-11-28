@@ -29,7 +29,7 @@ function App({ Component, pageProps = {}, metadata, recentPosts, categories, men
     import('react-facebook-pixel')
       .then((x) => x.default)
       .then((ReactPixel) => {
-        ReactPixel.init('648569532838418'); // facebookPixelId
+        ReactPixel.init('200487122108225'); // facebookPixelId
         ReactPixel.pageView();
 
         router.events.on('routeChangeComplete', () => {
