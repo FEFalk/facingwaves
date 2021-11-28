@@ -49,8 +49,8 @@ export const QUERY_SONG_BY_SLUG = gql`
       title
       slug
       song {
-          releaseDate
-          spotifyUrl
+        releaseDate
+        spotifyUrl
       }
     }
   }
