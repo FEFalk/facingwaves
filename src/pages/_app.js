@@ -11,9 +11,13 @@ import { getTopLevelPages } from 'lib/pages';
 import { getCategories } from 'lib/categories';
 import NextNProgress from 'nextjs-progressbar';
 import { getAllMenus, createMenuFromPages, MENU_LOCATION_NAVIGATION_DEFAULT } from 'lib/menus';
+import { init } from '@socialgouv/matomo-next';
 
 import 'styles/globals.scss';
 import variables from 'styles/_variables.module.scss';
+
+const MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;
+const MATOMO_SITE_ID = process.env.NEXT_PUBLIC_MATOMO_SITE_ID;
 
 function App({ Component, pageProps = {}, metadata, recentPosts, categories, menus }) {
   const site = useSiteContext({
@@ -36,6 +40,7 @@ function App({ Component, pageProps = {}, metadata, recentPosts, categories, men
           ReactPixel.pageView();
         });
       });
+    init({ url: MATOMO_URL, siteId: MATOMO_SITE_ID });
   }, [router.events]);
 
   return (
