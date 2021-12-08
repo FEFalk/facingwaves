@@ -3,7 +3,7 @@
   "homepage": "https://facingwavesmusic.com",
   "version": "0.1.0",
   "license": "MIT",
-  "author": "Colby Fayock <hello@colbyfayock.com>",
+  "author": "Filiph Eriksson Falk <filiph.eriksson-falk@gmail.com>",
   "scripts": {
     "build": "next build",
     "wpe-build": "npm run build",
