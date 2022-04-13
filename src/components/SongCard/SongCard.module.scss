@@ -8,7 +8,8 @@
   position: relative;
   margin: 1rem;
   box-shadow: 0 3px 6px rgb(0 0 0 / 12%), 0 3px 6px rgb(0 0 0 / 21%);
-
+  margin-top: -2rem;
+  
   @media (min-width:500px){
     max-width: 50%;
     margin: 1rem auto 0;
