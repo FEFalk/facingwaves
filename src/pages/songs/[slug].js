@@ -7,14 +7,11 @@ import usePageMetadata from 'hooks/use-page-metadata';
 
 import Layout from 'components/Layout';
 import SongCard from 'components/SongCard';
-import Section from 'components/Section';
-import Container from 'components/Container';
-import Content from 'components/Content';
 
 import styles from 'styles/pages/Song.module.scss';
 
 export default function Song({ post, socialImage }) {
-  const { title, metaTitle, description, content } = post;
+  const { title, metaTitle, description } = post;
 
   const { metadata: siteMetadata = {}, homepage } = useSite();
 
