@@ -63,21 +63,9 @@ export default function Song({ post, socialImage }) {
         </div>
         // </div>
       )}
-
-      <SongCard song={post} />
-
-      <Content>
-        <Section>
-          <Container>
-            <div
-              className={styles.content}
-              dangerouslySetInnerHTML={{
-                __html: content,
-              }}
-            />
-          </Container>
-        </Section>
-      </Content>
+      <div className={styles.songCardContainer}>
+        <SongCard song={post} />
+      </div>
     </Layout>
   );
 }
