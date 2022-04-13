@@ -24,7 +24,7 @@ const SongCard = ({ song, className }) => {
     if (fbpCookie != null && fbpCookie.length > 0) {
       var accessToken =
         'EAAGKlFhRTrEBAOboC57SXw2X2WvqRFALypTOeTYNk8J06cNOXJaeqcqhZClyK5v5IXH19FCULv4zxkdMiU7xQFUHvruL3jqyqUiFkAWDxgJXjUvwWUOLEf5zyvBEewirYkKASFSI3WWrHTaO3U54do1SqIfI9z7V8pZBT8FW2x3TAdUZAoA';
-      var url = 'https://graph.facebook.com/v5.0/200487122108225/events?access_token=' + accessToken;
+      var url = 'https://graph.facebook.com/v7.0/200487122108225/events?access_token=' + accessToken;
       const postBody = {
         data: [
           {
