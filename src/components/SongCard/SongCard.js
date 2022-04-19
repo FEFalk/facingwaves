@@ -36,7 +36,6 @@ const SongCard = ({ song, className }) => {
             },
           },
         ],
-        test_event_code: 'TEST8662',
       };
       const requestMetadata = {
         method: 'POST',
