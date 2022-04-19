@@ -4,6 +4,8 @@ import { push } from '@socialgouv/matomo-next';
 
 import styles from './SongCard.module.scss';
 
+const FB_ACCESS_TOKEN = process.env.FB_ACCESS_TOKEN;
+
 const SongCard = ({ song, className }) => {
   const containerClassName = new ClassName(styles.songCard);
 
@@ -22,9 +24,7 @@ const SongCard = ({ song, className }) => {
 
     var fbpCookie = getCookie('_fbp');
     if (fbpCookie != null && fbpCookie.length > 0) {
-      var accessToken =
-        'EAAHbQEkFYzwBAPMZA4S7XfKg01bfZAcCncbG6fsQPMSpjsxNcBelgBdBqDu3ngrOgLj2B7tihybQPbvtF6ycclWZCPzZBNOHEn2FVMZApbLpvIHOPOpDjonv7sZCZCZBjzWyXl0fjipbHLSb1CqXeuMtCZAtU4IqdknZCpSk6ZAqVzHzZBfGZClgwhV9o0gIsSf1JhhrkEozAJHbgZBbdosoMNKd8fnIlQEhI47ZCHsrKZCcVZCvhZCwZDZD';
-      var url = 'https://graph.facebook.com/v13.0/200487122108225/events?access_token=' + accessToken;
+      var url = 'https://graph.facebook.com/v13.0/200487122108225/events?access_token=' + FB_ACCESS_TOKEN;
       const postBody = {
         data: [
           {
