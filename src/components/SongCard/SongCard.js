@@ -23,8 +23,8 @@ const SongCard = ({ song, className }) => {
     var fbpCookie = getCookie('_fbp');
     if (fbpCookie != null && fbpCookie.length > 0) {
       var accessToken =
-        'EAAGKlFhRTrEBAJS9D3jKCWoxgYEfbymyp9A9XPT2AGsHwONiaUQYEclOvaog5779gCS2qJd3XsuUip1jTtxZAZCJ5Cmsdk3CuJJPP0i0zbp4IUBODHmTO7d626BUosSMt02rIqc9p7ZBD9tfC5tmhRpE55w17Vx33Dtqgzz0ZA27ZBdCZCy7H7';
-      var url = 'https://graph.facebook.com/v7.0/200487122108225/events?access_token=' + accessToken;
+        'EAAHbQEkFYzwBAPMZA4S7XfKg01bfZAcCncbG6fsQPMSpjsxNcBelgBdBqDu3ngrOgLj2B7tihybQPbvtF6ycclWZCPzZBNOHEn2FVMZApbLpvIHOPOpDjonv7sZCZCZBjzWyXl0fjipbHLSb1CqXeuMtCZAtU4IqdknZCpSk6ZAqVzHzZBfGZClgwhV9o0gIsSf1JhhrkEozAJHbgZBbdosoMNKd8fnIlQEhI47ZCHsrKZCcVZCvhZCwZDZD';
+      var url = 'https://graph.facebook.com/v13.0/200487122108225/events?access_token=' + accessToken;
       const postBody = {
         data: [
           {
