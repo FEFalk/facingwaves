@@ -23,7 +23,7 @@ const SongCard = ({ song, className }) => {
     var fbpCookie = getCookie('_fbp');
     if (fbpCookie != null && fbpCookie.length > 0) {
       var accessToken =
-        'EAAGKlFhRTrEBAGnZAgo87eZAQfKoPGlkFtqrGUi9n6wEMRzpt285JdqJd6hoWAg5ZBTMmJluFnR3so3Fn4itaSkZCryS2Tx6svtOKrohgpoeWZBJkT49PaHXc896f2a12cbsClDRpVCZApR4D9U4ykoF7rlifSXEAQD6Rks2WrZCfs5xkE7wvpF';
+        'EAAGKlFhRTrEBAIZC4GCTcgOu86wvrwULM04dj2ZCqZBuZBlTdGDspgshry5mU2S51u2jmZB4C4ogicSgeKZBgK3oj9tR2w8ZBScyLSegvrevsogKLyWEA91IJ03nmHbczkPMxLU5yHd4x5r5mXV8lRoYtekgxqEoQzsyBEI7DzsC5caNSAkKwtD';
       var url = 'https://graph.facebook.com/v7.0/200487122108225/events?access_token=' + accessToken;
       const postBody = {
         data: [
@@ -37,6 +37,7 @@ const SongCard = ({ song, className }) => {
             },
           },
         ],
+        test_event_code: 'TEST8662',
       };
       const requestMetadata = {
         method: 'POST',
