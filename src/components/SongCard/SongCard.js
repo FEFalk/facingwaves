@@ -22,6 +22,11 @@ const SongCard = ({ song, className }) => {
       });
 
     var fbpCookie = getCookie('_fbp');
+    var fbcCookie = getCookie('_fbc') || null;
+
+    if (!fbcCookie && window.location.search.includes('fbclid=')) {
+      fbcCookie = 'fb.1.' + +new Date() + '.' + window.location.search.split('fbclid=')[1];
+    }
     if (fbpCookie != null && fbpCookie.length > 0) {
       var url = 'https://graph.facebook.com/v13.0/200487122108225/events?access_token=' + FB_ACCESS_TOKEN;
       const postBody = {
@@ -33,6 +38,7 @@ const SongCard = ({ song, className }) => {
             event_source_url: window.location.href,
             user_data: {
               fbp: fbpCookie,
+              fbclid: fbcCookie,
             },
           },
         ],
