@@ -38,7 +38,7 @@ const SongCard = ({ song, className }) => {
             event_source_url: window.location.href,
             user_data: {
               fbp: fbpCookie,
-              fbclid: fbcCookie,
+              fbc: fbcCookie,
             },
           },
         ],
