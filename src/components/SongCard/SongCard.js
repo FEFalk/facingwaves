@@ -6,7 +6,7 @@ import styles from './SongCard.module.scss';
 const SongCard = ({ song, className }) => {
   const containerClassName = new ClassName(styles.songCard);
   const FB_ACCESS_TOKEN = process.env.NEXT_PUBLIC_FB_ACCESS_TOKEN;
-  
+
   function getCookie(cname) {
     return document.cookie.match('(^|;)\\s*' + cname + '\\s*=\\s*([^;]+)')?.pop() || '';
   }
