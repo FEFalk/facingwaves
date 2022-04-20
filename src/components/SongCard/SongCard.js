@@ -1,16 +1,21 @@
 import ClassName from 'models/classname';
 import Image from 'components/Image';
 import { push } from '@socialgouv/matomo-next';
-
 import styles from './SongCard.module.scss';
 
 const SongCard = ({ song, className }) => {
   const containerClassName = new ClassName(styles.songCard);
   const FB_ACCESS_TOKEN = process.env.NEXT_PUBLIC_FB_ACCESS_TOKEN;
-
+  
   function getCookie(cname) {
     return document.cookie.match('(^|;)\\s*' + cname + '\\s*=\\s*([^;]+)')?.pop() || '';
   }
+
+  const getUserData = async () => {
+    const response = await fetch(window.location.origin + '/api/user');
+    const data = await response.json();
+    return data;
+  };
 
   function handleClick(e) {
     e.preventDefault();
@@ -23,39 +28,42 @@ const SongCard = ({ song, className }) => {
 
     var fbpCookie = getCookie('_fbp');
     var fbcCookie = getCookie('_fbc') || null;
-
-    if (!fbcCookie && window.location.search.includes('fbclid=')) {
-      fbcCookie = 'fb.1.' + +new Date() + '.' + window.location.search.split('fbclid=')[1];
-    }
-    if (fbpCookie != null && fbpCookie.length > 0) {
-      var url = 'https://graph.facebook.com/v13.0/200487122108225/events?access_token=' + FB_ACCESS_TOKEN;
-      const postBody = {
-        data: [
-          {
-            event_name: 'ViewContent',
-            event_time: Math.floor(Date.now() / 1000),
-            action_source: 'website',
-            event_source_url: window.location.href,
-            user_data: {
-              fbp: fbpCookie,
-              fbc: fbcCookie,
+    getUserData().then((data) => {
+      if (!fbcCookie && window.location.search.includes('fbclid=')) {
+        fbcCookie = 'fb.1.' + +new Date() + '.' + window.location.search.split('fbclid=')[1];
+      }
+      if (fbpCookie != null && fbpCookie.length > 0) {
+        var url = 'https://graph.facebook.com/v13.0/200487122108225/events?access_token=' + FB_ACCESS_TOKEN;
+        const postBody = {
+          data: [
+            {
+              event_name: 'ViewContent',
+              event_time: Math.floor(Date.now() / 1000),
+              action_source: 'website',
+              event_source_url: window.location.href,
+              user_data: {
+                fbp: fbpCookie,
+                fbc: fbcCookie,
+                client_user_agent: navigator.userAgent,
+                client_ip_address: data.ip,
+              },
             },
+          ],
+        };
+        const requestMetadata = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
           },
-        ],
-      };
-      const requestMetadata = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(postBody),
-      };
-      fetch(url, requestMetadata).then((res) => res.json());
-    }
+          body: JSON.stringify(postBody),
+        };
+        fetch(url, requestMetadata).then((res) => res.json());
+      }
 
-    push(['trackEvent', song.title, 'Spotify conversion']);
+      push(['trackEvent', song.title, 'Spotify conversion']);
 
-    window.location.href = song.song.spotifyUrl;
+      window.location.href = song.song.spotifyUrl;
+    });
   }
   containerClassName.addIf(className, className);
   return (
