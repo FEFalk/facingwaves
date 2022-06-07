@@ -8,7 +8,12 @@
   position: relative;
   margin: 1rem;
   box-shadow: 0 3px 6px rgb(0 0 0 / 12%), 0 3px 6px rgb(0 0 0 / 21%);
-  margin-top: -2rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  cursor: pointer;
   
   @media (min-width:500px){
     max-width: 50%;
@@ -22,12 +27,31 @@
   @media (min-width:1280px){
     max-width: 25%;
   }
+
+  &:hover{
+    .songCardLinkItem
+    {
+      background-color: #2b2b2b;
+      .songCardPlayIcon{
+        border-left: 8px solid #00d95a;
+      }
+      .songCardPlayText{
+        color:#00d95a;
+      }
+    }
+  }
 }
 
 .songCardTitle{
-  font-size:1rem;
+  font-size:12px;
   margin-top: 0;
   margin-bottom: 0.5rem;
+
+  @media (min-width:1024px){
+    font-size:1rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
 }
 
 .songCardHeader
@@ -43,10 +67,23 @@
  justify-content: center;
  align-items: center;
  color: #ffffff;
+ border-radius: 8px;
+ border-top-left-radius: 0;
+ border-top-right-radius: 0;
+
+  @media (min-width:1024px){
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 }
 
 .songCardArtistName{
-  font-size: 0.8rem;
+  font-size: 10px;
+
+  @media (min-width:1024px){
+    font-size: 0.8rem;
+  }
 }
 
 .songCardHeadingContainer{
@@ -57,6 +94,35 @@
   width: 100%;
   border-bottom: 1px solid #5f5f5f;
   padding: 1.5rem 1.25rem 1rem;
+  position: relative;
+}
+
+.songCardCaret{
+  border-color: #1d1d1d transparent transparent;
+  border-style: solid;
+  border-width: 8px 8px 2px;
+  height: 0;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  width: 0;
+  z-index: 9;
+}
+
+.songCardCaretBorder{
+  border-color: #5f5f5f transparent transparent;
+  border-style: solid;
+  border-width: 10px 10px 0;
+  height: 0;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  width: 0;
+  z-index: 9;
 }
 
 .songCardStreamingLogo{
@@ -76,14 +142,27 @@
   align-items: center;
   cursor: pointer;
   transition: ease-in-out 0.1s all;
+  border-radius: 8px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 
   &:hover{
     background-color: #2b2b2b;
     .songCardPlayIcon{
-      border-left: 16px solid #00d95a;
+      border-left: 8px solid #00d95a;
     }
     .songCardPlayText{
       color:#00d95a;
+    }
+  }
+  @media (min-width:1024px){
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    &:hover{
+      .songCardPlayIcon{
+        border-left: 12px solid #00d95a;
+      }
     }
   }
 }
@@ -98,15 +177,22 @@
 
 .songCardPlayIcon{
   display: block;
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  border-left: 12px solid #ffffff;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 6px solid #ffffff;
+
   transition: ease-in-out 0.1s all;
+
+  @media (min-width:1024px){
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 10px solid #ffffff;
+  }
 }
 
 .songCardPlayText{
   margin-left: 0.5rem;
-  font-size: 12px;
+  font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: -1px;

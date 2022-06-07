@@ -67,7 +67,7 @@ const SongCard = ({ song, className }) => {
   }
   containerClassName.addIf(className, className);
   return (
-    <div className={containerClassName.toString()}>
+    <button className={containerClassName.toString()} onClick={handleClick}>
       <div className={styles.songCardHeader}>
         {song.featuredImage && (
           <Image
@@ -86,16 +86,18 @@ const SongCard = ({ song, className }) => {
             }}
           />
           <span className={styles.songCardArtistName}>Facing Waves</span>
+          <div className={styles.songCardCaretBorder}></div>
+          <div className={styles.songCardCaret}></div>
         </div>
-        <button className={styles.songCardLinkItem} onClick={handleClick}>
+        <div className={styles.songCardLinkItem}>
           <img className={styles.songCardStreamingLogo} src={'/images/spotify-logo-green.png'} />
           <div className={styles.songCardPlay}>
             <i className={styles.songCardPlayIcon}></i>
             <span className={styles.songCardPlayText}>Play</span>
           </div>
-        </button>
+        </div>
       </div>
-    </div>
+    </button>
   );
 };
 

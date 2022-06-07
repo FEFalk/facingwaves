@@ -12,7 +12,7 @@
 .songBackgroundImage{
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    filter: blur(25px);
+    filter: blur(150px);
     height: 100%;
     left: 0;
     overflow: auto;
@@ -33,10 +33,12 @@
 }
 
 .songCardContainer{
+    display: flex;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     @media (max-width:500px){
         display: flex;
-        align-items: center;
-        height: 100%;
         position: fixed;
         top: 0;
         z-index: 2;
