@@ -1,162 +1,250 @@
 @import "styles/settings/__settings";
 
-.emailSignupForm{
+.emailSignupForm {
   position: fixed;
-  top:calc(50vh - 300px);
+  top: calc(50vh - 300px);
   left: calc(50vw - 40%);
   z-index: 100;
   width: 80%;
   opacity: 0;
   pointer-events: none;
   transition: 0.3s all;
-  height: 600px;
+  min-height: 600px;
 
-  @media (min-width:600px){
-    height: 550px;
-    top:calc(50vh - 275px);
+  @media (min-width: 600px) {
+    min-height: 580px;
+    top: calc(50vh - 290px);
   }
 
-  @media (min-width:900px){
-    height: 580px;
-    top:calc(50vh - 290px);
+  @media (min-width: 900px) {
+    min-height: 600px;
+    top: calc(50vh - 300px);
   }
 
-  @media (min-width:1200px){
+  @media (min-width: 1200px) {
     width: 80%;
     left: calc(50vw - 40%);
-    top:calc(50vh - 250px);
+    top: calc(50vh - 250px);
     height: 500px;
+    min-height: auto;
   }
 
-  @media (min-width:1400px){
+  @media (min-width: 1400px) {
     width: 65%;
     left: calc(50vw - 32.5%);
+    top: calc(50vh - 300px);
+    height: 600px;
   }
 
-  @media (min-width:1600px){
+  @media (min-width: 1600px) {
     width: 55%;
     left: calc(50vw - 27.5%);
   }
 
-  @media (min-width:1900px){
+  @media (min-width: 1900px) {
     width: 50%;
     left: calc(50vw - 25%);
   }
-  @media (min-width:2000px){
-    width: 960px;
-    left: calc(50vw - 480px);
-  }
-  &.active{
-    opacity: 1;
-    pointer-events: all;
-    color:black;
+  @media (min-width: 2000px) {
+    width: 1080px;
+    left: calc(50vw - 540px);
   }
 
-  &__backdrop{
+  &__loadingRing {
+    display: none;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: calc(50% - 40px);
+
+    & div {
+      box-sizing: border-box;
+      display: block;
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      margin: 8px;
+      border: 8px solid #fff;
+      border-radius: 50%;
+      animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      border-color: #fff transparent transparent transparent;
+    }
+    & div:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+    & div:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+    & div:nth-child(3) {
+      animation-delay: -0.15s;
+    }
+    @keyframes lds-ring {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  &Loading {
+    .emailSignupForm__success,
+    .emailSignupForm__error,
+    .emailSignupForm__preamble,
+    .emailSignupForm__fieldGroup,
+    .emailSignupForm__submit {
+      opacity: 0.5;
+    }
+    .emailSignupForm__loadingRing {
+      display: block;
+    }
+  }
+
+  &Submitted {
+    .emailSignupForm__error,
+    .emailSignupForm__preamble,
+    .emailSignupForm__fieldGroup,
+    .emailSignupForm__submit,
+    .emailSignupForm__heading {
+      display: none;
+    }
+    .emailSignupForm__closeBigButton {
+      display: block;
+    }
+    .emailSignupForm__headingSuccess {
+      display: flex;
+    }
+  }
+
+  &__backdrop {
     background: black;
-    opacity:0.5;
+    opacity: 0.5;
     height: 100%;
     position: fixed;
     top: 0;
-    left:0;
+    left: 0;
     width: 100%;
     z-index: 99;
   }
 
-  &__content{
-    display:flex;
+  &__content {
+    display: flex;
     height: 100%;
     position: relative;
     z-index: 100;
     flex-direction: column;
 
-    @media (min-width:1200px){
+    @media (min-width: 1200px) {
       flex-direction: row;
     }
   }
 
-  &__image{
-    height: 40%;
+  &__image {
+    height: 160px;
     width: 100%;
     pointer-events: none;
-    
-    @media (min-width:1200px){
+
+    @media (min-width: 600px) {
+      height: 250px;
+    }
+    @media (min-width: 1200px) {
       width: 50%;
       height: 100%;
     }
 
-    div{
+    div {
       height: 100%;
     }
-    img{
+    img {
       object-fit: cover;
     }
   }
 
-  &__heading{
-    margin-top:0;
+  &__heading {
+    margin-top: 0;
     font-size: 1.5rem;
     display: flex;
     justify-content: center;
-    font-family: 'Anton', 'sans-serif';
+    font-family: "Anton", "sans-serif";
   }
 
-  &__form{
-    background: linear-gradient(180deg, rgba(19,1,25,1) 0%, rgba(7,5,34,1) 100%);
-    color:white;
+  &__headingSuccess {
+    display: none;
+  }
+
+  &__preamble {
+  }
+
+  &__form {
+    background: linear-gradient(180deg, rgba(19, 1, 25, 1) 0%, rgba(7, 5, 34, 1) 100%);
+    color: white;
     padding: 2rem;
-    display:flex;
+    display: flex;
     justify-content: center;
     height: 60%;
     width: 100%;
 
-    @media (min-width:1200px){
+    @media (min-width: 1200px) {
       width: 50%;
       height: 100%;
     }
   }
+  &__error {
+    display: none;
+    color: #f20000;
+    margin-bottom: 0;
+    margin-top: 0.5rem;
+  }
+  &__success {
+    display: none;
+    font-size: 1.25rem;
+  }
 
-  &__input{
+  &__input {
     display: block;
-    width:100%;
+    width: 100%;
     background: transparent;
     border: none;
     border-bottom: 1px solid white;
     padding-left: 0 !important;
-    color:white;
+    color: white;
     margin-bottom: 0.5rem;
 
-    &::placeholder{
-      color:rgb(183, 183, 183);
+    &::placeholder {
+      color: rgb(183, 183, 183);
     }
 
-    &:focus-visible{
-      outline:none;
+    &:focus-visible {
+      outline: none;
     }
 
     /* Change the white to any color */
     &:-webkit-autofill,
-    &:-webkit-autofill:hover, 
-    &:-webkit-autofill:focus, 
-    &:-webkit-autofill:active{
-        -webkit-box-shadow: 0 0 0 30px #0c0020 inset !important;
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px #0c0020 inset !important;
     }
 
     /*Change text in autofill textbox*/
-    &:-webkit-autofill{
+    &:-webkit-autofill {
       -webkit-text-fill-color: white !important;
+    }
+    &:required:invalid {
+      color: red;
     }
   }
 
-  &__required{
-    font-size:0.75rem;
+  &__required {
+    font-size: 0.75rem;
   }
 
-  &__submit{
-    font-family: 'Anton', 'sans-serif';
-    margin-top:1rem;
-    font-size:1.25rem;
-    width:100%;
+  &__submit {
+    font-family: "Anton", "sans-serif";
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    width: 100%;
     background-color: transparent;
     background-color: #ee6f15;
     color: white;
@@ -166,31 +254,52 @@
     transition: all 0.2s;
     text-transform: uppercase;
     border: none;
-    &:hover{
+    &:hover {
       background-color: #ee8031;
     }
   }
 
-  &__close{
+  &__closeBigButton {
+    display: none;
+    font-family: "Anton", "sans-serif";
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    width: 100%;
+    background-color: transparent;
+    background-color: white;
+    color: black;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    border: none;
+    &:hover {
+      background-color: #ee8031;
+    }
+  }
+
+  &__close {
     position: absolute;
     right: 1rem;
     top: 1rem;
-    width:2rem;
+    width: 2rem;
     height: 2rem;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0.3;
-    background:transparent;
-    border:none;
+    background: transparent;
+    border: none;
     cursor: pointer;
     &:hover {
       opacity: 1;
     }
-    &:before, &:after {
+    &:before,
+    &:after {
       position: absolute;
       left: 15px;
-      content: ' ';
+      content: " ";
       height: 33px;
       width: 2px;
       background-color: white;

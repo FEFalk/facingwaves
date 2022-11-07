@@ -17,7 +17,7 @@ const SongCard = ({ song, className }) => {
     return data;
   };
 
-  const handleClickStream = (e, url) => {
+  const handleClickStream = (e) => {
     e.preventDefault();
     import('react-facebook-pixel')
       .then((x) => x.default)
@@ -63,22 +63,20 @@ const SongCard = ({ song, className }) => {
       push(['trackEvent', song.title, 'Spotify conversion']);
 
       window.location.href = url;
-      
     });
-  }
+  };
   function handleClickEmail(e) {
     e.preventDefault();
-    var element = document.getElementById("email-subscribe-form");
+    var element = document.getElementById('email-subscribe-form');
     element.style.opacity = 1;
-    element.style.pointerEvents = "all";
-    
-    console.log("email", element);
+    element.style.pointerEvents = 'all';
+    push(['trackEvent', song.title, 'Email button clicked']);
   }
 
   containerClassName.addIf(className, className);
   return (
     <div className={containerClassName.toString()}>
-      <div className={styles.songCardHeader} onClick={event => handleClickStream(event, song.song.spotifyUrl)}>
+      <div className={styles.songCardHeader} onClick={(event) => handleClickStream(event, song.song.spotifyUrl)}>
         {song.featuredImage && (
           <Image
             {...song.featuredImage}
@@ -99,14 +97,22 @@ const SongCard = ({ song, className }) => {
           <div className={styles.songCardCaretBorder}></div>
           <div className={styles.songCardCaret}></div>
         </div>
-        <button className={styles.songCardLinkItem + " " + styles.songCardLinkItemSpotify} id={'play-spotify'} onClick={event => handleClickStream(event, song.song.spotifyUrl)}>
+        <button
+          className={styles.songCardLinkItem + ' ' + styles.songCardLinkItemSpotify}
+          id={'play-spotify'}
+          onClick={(event) => handleClickStream(event, song.song.spotifyUrl)}
+        >
           <img className={styles.songCardStreamingLogo} src={'/images/spotify-logo-green_small.png'} />
           <div className={styles.songCardPlay}>
             <i className={styles.songCardPlayIcon}></i>
             <span className={styles.songCardPlayText}>Play</span>
           </div>
         </button>
-        <button className={styles.songCardLinkItem + " " + styles.songCardLinkItemAppleMusic} id={'play-apple-music'} onClick={event => handleClickStream(event, song.song.appleMusicUrl)}>
+        <button
+          className={styles.songCardLinkItem + ' ' + styles.songCardLinkItemAppleMusic}
+          id={'play-apple-music'}
+          onClick={(event) => handleClickStream(event, song.song.appleMusicUrl)}
+        >
           <img className={styles.songCardAppleMusicLogo} src={'/images/apple-music-logo_small.png'} />
           <div className={styles.songCardPlay}>
             <i className={styles.songCardPlayIcon}></i>
