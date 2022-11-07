@@ -1,34 +1,32 @@
 @import "styles/settings/__settings";
 
-.songCard {
-  max-width: 100%;
+.songTeaser {
+  width: 100%;
   padding: 0;
-  margin: 0 auto;
   z-index: 2;
   position: relative;
-  margin: 1rem;
   box-shadow: 0 3px 6px rgb(0 0 0 / 12%), 0 3px 6px rgb(0 0 0 / 21%);
-  margin-top: 1rem;
   border: none;
   border-radius: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  
-  @media (min-width:500px){
-    max-width: 50%;
-    margin: 1rem auto 0;
-  }
+  cursor: pointer;
 
-  @media (min-width:1024px){
-    max-width: 35%;
-  }
-
-  @media (min-width:1280px){
-    max-width: 25%;
+  &:hover{
+    .songTeaserLinkItem
+    {
+      background-color: #2b2b2b;
+      .songTeaserPlayIcon{
+        border-left: 8px solid #00d95a;
+      }
+      .songTeaserPlayText{
+        color:#00d95a;
+      }
+    }
   }
 }
 
-.songCardTitle{
+.songTeaserTitle{
   font-size:12px;
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -40,24 +38,12 @@
   }
 }
 
-.songCardHeader
+.songTeaserHeader
 {
-  cursor: pointer;
-  &:hover{
-    ~ .songCardFooter .songCardLinkItemSpotify
-    {
-      background-color: #2b2b2b;
-      .songCardPlayIcon{
-        border-left: 8px solid #00d95a;
-      }
-      .songCardPlayText{
-        color:#00d95a;
-      }
-    }
-  }
+  
 }
 
-.songCardFooter
+.songTeaserFooter
 {
  background-color: $color-gray;
  display: flex;
@@ -76,7 +62,7 @@
   }
 }
 
-.songCardArtistName{
+.songTeaserArtistName{
   font-size: 10px;
 
   @media (min-width:1024px){
@@ -84,7 +70,7 @@
   }
 }
 
-.songCardHeadingContainer{
+.songTeaserHeadingContainer{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -95,7 +81,7 @@
   position: relative;
 }
 
-.songCardCaret{
+.songTeaserCaret{
   border-color: #1d1d1d transparent transparent;
   border-style: solid;
   border-width: 8px 8px 2px;
@@ -109,7 +95,7 @@
   z-index: 9;
 }
 
-.songCardCaretBorder{
+.songTeaserCaretBorder{
   border-color: #5f5f5f transparent transparent;
   border-style: solid;
   border-width: 10px 10px 0;
@@ -123,31 +109,11 @@
   z-index: 9;
 }
 
-.songCardStreamingLogo{
-  width:25%;
+.songTeaserStreamingLogo{
+  width: 35%;
 }
 
-.songCardGmailLogo{
-  width:10%;
-}
-
-.songCardGmailText{
-  font-family: -apple-system, BlinkMacSystemFont, "avenir next", avenir, "segoe ui", "fira sans", roboto, noto, "droid sans", "liberation sans", "lucida grande", "helvetica neue", helvetica, "franklin gothic medium", "century gothic", cantarell, oxygen, ubuntu, sans-serif;
-  margin-left: 0.35rem;
-  font-size: 16px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: -1px;
-  line-height: 1;
-  transition: ease-in-out 0.1s all;
-  font-weight: 500;
-}
-
-.songCardAppleMusicLogo{
-  width: 30%;
-  margin-left: 3px;
-}
-.songCardLinkItem{
+.songTeaserLinkItem{
   display: flex;
   min-height: 5rem;
   justify-content: space-between;
@@ -160,45 +126,32 @@
   align-items: center;
   cursor: pointer;
   transition: ease-in-out 0.1s all;
-  border-bottom: 1px solid #5f5f5f;
-
-  &:last-of-type{
-    border-radius: 8px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
+  border-radius: 8px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 
   &:hover{
     background-color: #2b2b2b;
-    .songCardPlayIcon{
+    .songTeaserPlayIcon{
       border-left: 8px solid #00d95a;
     }
-    .songCardPlayText{
+    .songTeaserPlayText{
       color:#00d95a;
     }
   }
   @media (min-width:1024px){
-
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     &:hover{
-      .songCardPlayIcon{
+      .songTeaserPlayIcon{
         border-left: 12px solid #00d95a;
       }
     }
-    &:last-of-type{
-      border-radius: 10px;    
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-  }
-
-
-  &__nameContainer{
-    display: flex;
-    align-items: center;
   }
 }
 
-.songCardPlay{
+.songTeaserPlay{
   width:25%;
   display: flex;
   align-items: center;
@@ -206,7 +159,7 @@
   
 }
 
-.songCardPlayIcon{
+.songTeaserPlayIcon{
   display: block;
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
@@ -221,7 +174,7 @@
   }
 }
 
-.songCardPlayText{
+.songTeaserPlayText{
   margin-left: 0.5rem;
   font-size: 9px;
   text-transform: uppercase;

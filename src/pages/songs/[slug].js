@@ -9,8 +9,10 @@ import Layout from 'components/Layout';
 import SongCard from 'components/SongCard';
 
 import styles from 'styles/pages/Song.module.scss';
+import EmailSignupForm from 'components/EmailSignupForm';
+import { getMediaItemBySlug } from 'lib/media';
 
-export default function Song({ post, socialImage }) {
+export default function Song({ post, socialImage, mediaItem }) {
   const { title, metaTitle, description } = post;
 
   const { metadata: siteMetadata = {}, homepage } = useSite();
@@ -63,6 +65,7 @@ export default function Song({ post, socialImage }) {
       <div className={styles.songCardContainer}>
         <SongCard song={post} />
       </div>
+      <EmailSignupForm mediaItem={mediaItem} song={post}/>
     </Layout>
   );
 }
@@ -72,18 +75,21 @@ export async function getStaticProps({ params = {} } = {}) {
 
   const socialImage = `${process.env.OG_IMAGE_DIRECTORY}/${params?.slug}.png`;
 
+  const { mediaItem } = await getMediaItemBySlug("bannerbild-facing-waves-small");
+
   return {
     props: {
       post,
       socialImage,
+      mediaItem,
     },
   };
 }
 
 export async function getStaticPaths() {
-  const { posts } = await getAllSongs();
+  const { songs } = await getAllSongs();
 
-  const paths = posts
+  const paths = songs
     .filter(({ slug }) => typeof slug === 'string')
     .map(({ slug }) => ({
       params: {

@@ -51,6 +51,7 @@ export const QUERY_SONG_BY_SLUG = gql`
       song {
         releaseDate
         spotifyUrl
+        appleMusicUrl
       }
     }
   }

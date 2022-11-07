@@ -116,10 +116,10 @@ export async function getAllSongs() {
     query: QUERY_ALL_SONGS,
   });
 
-  const posts = data?.data.songs.edges.map(({ node = {} }) => node);
+  const songs = data?.data.songs.edges.map(({ node = {} }) => node);
 
   return {
-    posts: Array.isArray(posts) && posts.map(mapPostData),
+    songs: Array.isArray(songs) && songs.map(mapPostData),
   };
 }
 
