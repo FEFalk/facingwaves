@@ -245,7 +245,6 @@
     margin-top: 1rem;
     font-size: 1.25rem;
     width: 100%;
-    background-color: transparent;
     background-color: #ee6f15;
     color: white;
     padding: 0.75rem 1rem;
@@ -265,9 +264,8 @@
     margin-top: 1rem;
     font-size: 1.25rem;
     width: 100%;
-    background-color: transparent;
-    background-color: white;
-    color: black;
+    background-color: #01ae49;
+    color: white;
     padding: 0.75rem 1rem;
     cursor: pointer;
     letter-spacing: 2px;
@@ -275,7 +273,7 @@
     text-transform: uppercase;
     border: none;
     &:hover {
-      background-color: #ee8031;
+      background-color: #06893c;
     }
   }
 
