@@ -28,6 +28,8 @@ const SongTeaser = ({ song, className }) => {
 
     var fbpCookie = getCookie('_fbp');
     var fbcCookie = getCookie('_fbc') || null;
+    var windowReference = window.open('about:blank', '_blank');
+
     getUserData().then((data) => {
       if (!fbcCookie && window.location.search.includes('fbclid=')) {
         fbcCookie = 'fb.1.' + +new Date() + '.' + window.location.search.split('fbclid=')[1];
@@ -61,8 +63,7 @@ const SongTeaser = ({ song, className }) => {
       }
 
       push(['trackEvent', song.title, 'Spotify conversion']);
-
-      window.open(song.song.spotifyUrl, '_blank');
+      windowReference.location = song.song.spotifyUrl;
     });
   }
   containerClassName.addIf(className, className);
