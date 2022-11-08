@@ -11,7 +11,9 @@ export default async (req, res) => {
     const DATACENTER = process.env.MAILCHIMP_API_SERVER;
     const data = {
       email_address: email,
-      full_name: fname,
+      merge_fields: {
+        FNAME: fname,
+      },
       status: 'subscribed',
     };
 
