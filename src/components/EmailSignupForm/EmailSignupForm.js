@@ -62,7 +62,7 @@ const EmailSignupForm = ({ mediaItem, song }) => {
     const res = await fetch(window.location.origin + '/api/subscribeUser', {
       body: JSON.stringify({
         email: inputRefEmail.current.value,
-        fname: inputRefFName.current.value,
+        full_name: inputRefFName.current.value,
       }),
 
       headers: {
