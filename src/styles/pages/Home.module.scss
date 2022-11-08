@@ -1,23 +1,27 @@
 @import "styles/settings/__settings";
 
-.heroSection{
+.heroSection {
   height: 100vh;
   margin: 0;
   display: flex;
-  &__title{
-    font-size:8rem;
+  &__title {
+    font-size: 8rem;
     display: flex;
     justify-content: center;
     text-transform: uppercase;
-    font-family: 'Anton', sans-serif;
+    font-family: "Anton", sans-serif;
     align-items: center;
-    margin-top: calc(50vh - 12rem);
+    margin-top: calc(50vh - 14rem);
+
+    @media (min-width: 720px) {
+      margin-top: calc(50vh - 12rem);
+    }
   }
-  &__subscribeButton{
+  &__subscribeButton {
     font-family: "Anton", "sans-serif";
     margin-top: 1rem;
     font-size: 1.25rem;
-    width: 25%;
+    width: 50%;
     background-color: transparent;
     background-color: #ee6f15;
     color: white;
@@ -31,28 +35,44 @@
       background-color: #ee8031;
     }
 
-    &Container{
-      width:100%;
-      display:flex;
+    @media (min-width: 720px) {
+      width: 25%;
+    }
+
+    &Container {
+      width: 100%;
+      display: flex;
       justify-content: center;
     }
   }
 
   @keyframes scroll {
-    0% { opacity: 0; }
-    10% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(22px); opacity: 0;}
+    0% {
+      opacity: 0;
+    }
+    10% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(22px);
+      opacity: 0;
+    }
   }
-  &__scrollDown{
+  &__scrollDown {
     position: absolute;
     right: 0;
-    bottom: 5rem;
+    bottom: 2rem;
     left: 0;
     margin: auto;
-    width :34px;
+    width: 34px;
     height: 55px;
+
+    @media (min-width: 720px) {
+      bottom: 5rem;
+    }
   }
-  &__scrollDownMousey{
+  &__scrollDownMousey {
     width: 3px;
     padding: 10px 15px;
     height: 35px;
@@ -61,14 +81,14 @@
     opacity: 0.75;
     box-sizing: content-box;
   }
-  &__scrollDownScroller{
+  &__scrollDownScroller {
     width: 3px;
     height: 10px;
     border-radius: 25%;
     background-color: #fff;
     animation-name: scroll;
     animation-duration: 1s;
-    animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+    animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
     animation-iteration-count: infinite;
   }
 }
@@ -79,13 +99,13 @@
   font-size: 1.5rem;
 }
 
-.releases{
+.releases {
   background-color: black;
-  font-family: 'Anton', sans-serif;
-  margin:0;
-  padding:3rem 0 4rem;
+  font-family: "Anton", sans-serif;
+  margin: 0;
+  padding: 3rem 0 4rem;
 
-  &__title{
+  &__title {
     margin: 0 0 2rem 0.5rem;
   }
 }
@@ -98,15 +118,15 @@
   flex-wrap: wrap;
 }
 
-.teaser{
+.teaser {
   width: calc(50% - 1rem);
   margin: 0 0.5rem 1rem;
 
-  @media (min-width:720px){
+  @media (min-width: 720px) {
     width: calc(33% - 1rem);
   }
 
-  @media (min-width:1280px){
+  @media (min-width: 1280px) {
     width: calc(25% - 1rem);
   }
 }
