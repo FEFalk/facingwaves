@@ -62,7 +62,7 @@ const SongTeaser = ({ song, className }) => {
 
       push(['trackEvent', song.title, 'Spotify conversion']);
 
-      window.location.href = song.song.spotifyUrl;
+      window.open(song.song.spotifyUrl, '_blank');
     });
   }
   containerClassName.addIf(className, className);

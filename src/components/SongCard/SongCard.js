@@ -62,7 +62,7 @@ const SongCard = ({ song, className }) => {
 
       push(['trackEvent', song.title, 'Spotify conversion']);
 
-      window.location.href = streamUrl;
+      window.open(streamUrl, '_blank');
     });
   };
   function handleClickEmail(e) {

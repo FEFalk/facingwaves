@@ -22,6 +22,11 @@ export const QUERY_ALL_SONGS = gql`
           databaseId
           title
           slug
+          song {
+            releaseDate
+            spotifyUrl
+            appleMusicUrl
+          }
         }
       }
     }
