@@ -28,7 +28,7 @@ const SongCard = ({ song, className }) => {
 
     var fbpCookie = getCookie('_fbp');
     var fbcCookie = getCookie('_fbc') || null;
-    var windowReference = window.open('about:blank', '_blank');
+    var windowReference = window.open();
     getUserData().then((data) => {
       if (!fbcCookie && window.location.search.includes('fbclid=')) {
         fbcCookie = 'fb.1.' + +new Date() + '.' + window.location.search.split('fbclid=')[1];
