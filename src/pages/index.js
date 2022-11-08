@@ -12,12 +12,21 @@ import Pagination from 'components/Pagination';
 import SongTeaser from 'components/SongTeaser';
 import EmailSignupForm from 'components/EmailSignupForm';
 import { getMediaItemBySlug } from 'lib/media';
+import { push } from '@socialgouv/matomo-next';
 
 import styles from 'styles/pages/Home.module.scss';
 
 export default function Home({ songs, posts, pagination, mediaItem }) {
   const { metadata = {} } = useSite();
   const { title, description } = metadata;
+
+  function handleClickEmail(e) {
+    e.preventDefault();
+    var element = document.getElementById('email-subscribe-form');
+    element.style.opacity = 1;
+    element.style.pointerEvents = 'all';
+    push(['trackEvent', "Startpage", 'Email button clicked']);
+  }
 
   return (
     <Layout>
@@ -30,6 +39,16 @@ export default function Home({ songs, posts, pagination, mediaItem }) {
               __html: title,
             }}
           />
+          <div className={'button ' + styles.heroSection__subscribeButtonContainer}>
+            <button className={'button ' + styles.heroSection__subscribeButton} onClick={handleClickEmail}>
+              SUBSCRIBE
+            </button>
+          </div>
+          <div className={styles.heroSection__scrollDown}>
+            <div className={styles.heroSection__scrollDownMousey}>
+              <div className={styles.heroSection__scrollDownScroller}></div>
+            </div>
+          </div>
         </Container>
       </Section>
 
