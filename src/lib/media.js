@@ -1,9 +1,8 @@
 import { getApolloClient } from 'lib/apollo-client';
 
 import { updateUserAvatar } from 'lib/users';
-import { sortObjectsByDate } from 'lib/datetime';
 
-import { QUERY_MEDIA_ITEM_BY_SLUG} from 'data/media';
+import { QUERY_MEDIA_ITEM_BY_SLUG } from 'data/media';
 
 /**
  * getSongBySlug
@@ -11,7 +10,6 @@ import { QUERY_MEDIA_ITEM_BY_SLUG} from 'data/media';
 
 export async function getMediaItemBySlug(slug) {
   const apolloClient = getApolloClient();
-  const apiHost = new URL(process.env.WORDPRESS_GRAPHQL_ENDPOINT).host;
 
   let mediaData;
 

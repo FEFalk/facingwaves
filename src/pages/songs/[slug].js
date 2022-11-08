@@ -65,7 +65,7 @@ export default function Song({ post, socialImage, mediaItem }) {
       <div className={styles.songCardContainer}>
         <SongCard song={post} />
       </div>
-      <EmailSignupForm mediaItem={mediaItem} song={post}/>
+      <EmailSignupForm mediaItem={mediaItem} song={post} />
     </Layout>
   );
 }
@@ -75,7 +75,7 @@ export async function getStaticProps({ params = {} } = {}) {
 
   const socialImage = `${process.env.OG_IMAGE_DIRECTORY}/${params?.slug}.png`;
 
-  const { mediaItem } = await getMediaItemBySlug("bannerbild-facing-waves-small");
+  const { mediaItem } = await getMediaItemBySlug('bannerbild-facing-waves-small');
 
   return {
     props: {

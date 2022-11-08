@@ -17,7 +17,7 @@ const SongCard = ({ song, className }) => {
     return data;
   };
 
-  const handleClickStream = (e) => {
+  const handleClickStream = (e, streamUrl) => {
     e.preventDefault();
     import('react-facebook-pixel')
       .then((x) => x.default)
@@ -62,7 +62,7 @@ const SongCard = ({ song, className }) => {
 
       push(['trackEvent', song.title, 'Spotify conversion']);
 
-      window.location.href = url;
+      window.location.href = streamUrl;
     });
   };
   function handleClickEmail(e) {

@@ -4,11 +4,8 @@ import { getAllSongs } from 'lib/songs';
 import { WebsiteJsonLd } from 'lib/json-ld';
 
 import Layout from 'components/Layout';
-import Header from 'components/Header';
 import Section from 'components/Section';
 import Container from 'components/Container';
-import PostCard from 'components/PostCard';
-import Pagination from 'components/Pagination';
 import SongTeaser from 'components/SongTeaser';
 import EmailSignupForm from 'components/EmailSignupForm';
 import { getMediaItemBySlug } from 'lib/media';
@@ -16,16 +13,16 @@ import { push } from '@socialgouv/matomo-next';
 
 import styles from 'styles/pages/Home.module.scss';
 
-export default function Home({ songs, posts, pagination, mediaItem }) {
+export default function Home({ songs, mediaItem }) {
   const { metadata = {} } = useSite();
-  const { title, description } = metadata;
+  const { title } = metadata;
 
   function handleClickEmail(e) {
     e.preventDefault();
     var element = document.getElementById('email-subscribe-form');
     element.style.opacity = 1;
     element.style.pointerEvents = 'all';
-    push(['trackEvent', "Startpage", 'Email button clicked']);
+    push(['trackEvent', 'Startpage', 'Email button clicked']);
   }
 
   return (
@@ -34,7 +31,8 @@ export default function Home({ songs, posts, pagination, mediaItem }) {
       {/* <Header></Header> */}
       <Section className={styles.heroSection}>
         <Container>
-          <h1 className={styles.heroSection__title}
+          <h1
+            className={styles.heroSection__title}
             dangerouslySetInnerHTML={{
               __html: title,
             }}
@@ -74,7 +72,7 @@ export default function Home({ songs, posts, pagination, mediaItem }) {
 export async function getStaticProps() {
   const { posts, pagination } = await getPaginatedPosts();
   const { songs } = await getAllSongs();
-  const { mediaItem } = await getMediaItemBySlug("bannerbild-facing-waves-small");
+  const { mediaItem } = await getMediaItemBySlug('bannerbild-facing-waves-small');
 
   return {
     props: {

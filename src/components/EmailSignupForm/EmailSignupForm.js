@@ -20,7 +20,7 @@ const EmailSignupForm = ({ mediaItem, song }) => {
     const data = await response.json();
     return data;
   };
-  
+
   const [showResponse, setShowResponse] = useState(false);
   function showResponseMessage() {
     setShowResponse(true);
@@ -92,7 +92,8 @@ const EmailSignupForm = ({ mediaItem, song }) => {
       successElement.innerHTML = successMessage;
       successElement.style.display = 'block';
 
-      push(['trackEvent', "Startpage", 'Email Signup']);
+      var currentPage = song != null ? song.title : 'Startpage';
+      push(['trackEvent', currentPage, 'Email Signup']);
       setSubmittedTrue();
       showResponseMessage();
 
@@ -102,7 +103,7 @@ const EmailSignupForm = ({ mediaItem, song }) => {
           ReactPixel.init('200487122108225'); // facebookPixelId
           ReactPixel.track('CompleteRegistration');
         });
-  
+
       var fbpCookie = getCookie('_fbp');
       var fbcCookie = getCookie('_fbc') || null;
       getUserData().then((data) => {
