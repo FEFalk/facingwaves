@@ -28,7 +28,6 @@ const SongTeaser = ({ song, className }) => {
 
     var fbpCookie = getCookie('_fbp');
     var fbcCookie = getCookie('_fbc') || null;
-    var windowReference = window.open('about:blank', '_blank');
 
     getUserData().then((data) => {
       if (!fbcCookie && window.location.search.includes('fbclid=')) {
@@ -63,7 +62,9 @@ const SongTeaser = ({ song, className }) => {
       }
 
       push(['trackEvent', song.title, 'Spotify conversion']);
-      windowReference.location = song.song.spotifyUrl;
+    });
+    setTimeout(() => {
+      window.open(song.song.spotifyUrl, '_blank');
     });
   }
   containerClassName.addIf(className, className);
