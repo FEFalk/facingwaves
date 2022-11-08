@@ -87,16 +87,6 @@ const SongCard = ({ song, className }) => {
     } else {
       window.open(streamUrl, '_blank');
     }
-
-    // let a = document.createElement('a');
-    // document.body.appendChild(a);
-    // a.style = 'display: none';
-    // a.href = streamUrl;
-    // if(mobileAndTabletCheck() == false){
-    //   a.setAttribute('target', '_blank');
-    // }
-    // a.click();
-    // document.body.removeChild(a);
   };
   function handleClickEmail(e) {
     e.preventDefault();
