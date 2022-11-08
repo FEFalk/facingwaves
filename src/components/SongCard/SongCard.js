@@ -59,11 +59,10 @@ const SongCard = ({ song, className }) => {
         };
         fetch(url, requestMetadata).then((res) => res.json());
       }
-
+      setTimeout(() => {
+        window.open(streamUrl, '_blank');
+      });
       push(['trackEvent', song.title, 'Spotify conversion']);
-    });
-    setTimeout(() => {
-      window.open(streamUrl, '_blank');
     });
   };
   function handleClickEmail(e) {

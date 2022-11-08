@@ -60,11 +60,10 @@ const SongTeaser = ({ song, className }) => {
         };
         fetch(url, requestMetadata).then((res) => res.json());
       }
-
+      setTimeout(() => {
+        window.open(song.song.spotifyUrl, '_blank');
+      });
       push(['trackEvent', song.title, 'Spotify conversion']);
-    });
-    setTimeout(() => {
-      window.open(song.song.spotifyUrl, '_blank');
     });
   }
   containerClassName.addIf(className, className);
