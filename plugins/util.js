@@ -211,6 +211,33 @@ async function getPages(apolloClient, process, verbose = false) {
 }
 
 /**
+ * getSiteSongs
+ */
+
+async function getSongs(apolloClient, process, verbose = false) {
+  const query = gql`
+    {
+      songs(first: 10000) {
+        edges {
+          node {
+            modified
+            slug
+          }
+        }
+      }
+    }
+  `;
+  const data = await apolloClient.query({ query });
+
+  const songs = data?.data.songs.edges.map(({ node = {} }) => node);
+
+  verbose && console.log(`[${process}] Successfully fetched songs from ${apolloClient.link.options.uri}`);
+
+  return {
+    songs,
+  };
+}
+/**
  * getFeedData
  */
 
@@ -231,10 +258,12 @@ async function getFeedData(apolloClient, process, verbose = false) {
 async function getSitemapData(apolloClient, process, verbose = false) {
   const posts = await getAllPosts(apolloClient, process, verbose);
   const pages = await getPages(apolloClient, process, verbose);
+  const songs = await getSongs(apolloClient, process, verbose);
 
   return {
     ...posts,
     ...pages,
+    ...songs,
   };
 }
 
@@ -301,7 +330,7 @@ function generateIndexSearch({ posts }) {
  * getSitemapData
  */
 
-function generateSitemap({ posts = [], pages = [] }) {
+function generateSitemap({ posts = [], pages = [], songs = [] }) {
   const { homepage = '' } = config;
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -325,6 +354,15 @@ function generateSitemap({ posts = [], pages = [] }) {
               return `<url>
                         <loc>${homepage}/posts/${post.slug}</loc>
                         <lastmod>${new Date(post.modified).toISOString()}</lastmod>
+                      </url>
+                  `;
+            })
+            .join('')}
+          ${songs
+            .map((song) => {
+              return `<url>
+                        <loc>${homepage}/songs/${song.slug}</loc>
+                        <lastmod>${new Date(song.modified).toISOString()}</lastmod>
                       </url>
                   `;
             })

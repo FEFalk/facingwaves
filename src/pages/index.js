@@ -1,5 +1,5 @@
+import { Helmet } from 'react-helmet';
 import useSite from 'hooks/use-site';
-import { getPaginatedPosts } from 'lib/posts';
 import { getAllSongs } from 'lib/songs';
 import { WebsiteJsonLd } from 'lib/json-ld';
 
@@ -10,12 +10,37 @@ import SongTeaser from 'components/SongTeaser';
 import EmailSignupForm from 'components/EmailSignupForm';
 import { getMediaItemBySlug } from 'lib/media';
 import { push } from '@socialgouv/matomo-next';
+import usePageMetadata from 'hooks/use-page-metadata';
+import { helmetSettingsFromMetadata } from 'lib/site';
 
 import styles from 'styles/pages/Home.module.scss';
 
 export default function Home({ songs, mediaItem }) {
-  const { metadata = {} } = useSite();
-  const { title } = metadata;
+  const { metadata: siteMetadata = {} } = useSite();
+  var post = {};
+
+  post.og = {};
+  post.og.imageUrl = `${mediaItem.sourceUrl}`;
+  post.og.imageSecureUrl = mediaItem.sourceUrl;
+  post.og.imageWidth = 2000;
+  post.og.imageHeight = 1000;
+
+  const { metadata } = usePageMetadata({
+    metadata: {
+      ...post,
+      title: siteMetadata.title,
+    },
+  });
+
+  const fullTitle = siteMetadata.title + ' - Official Site';
+
+  if (process.env.WORDPRESS_PLUGIN_SEO !== true) {
+    metadata.title = fullTitle;
+    metadata.og.title = fullTitle;
+    metadata.twitter.title = fullTitle;
+  }
+
+  const helmetSettings = helmetSettingsFromMetadata(metadata);
 
   function handleClickEmail(e) {
     e.preventDefault();
@@ -27,14 +52,16 @@ export default function Home({ songs, mediaItem }) {
 
   return (
     <Layout>
-      <WebsiteJsonLd siteTitle={title} />
+      <Helmet {...helmetSettings} />
+
+      <WebsiteJsonLd siteTitle={fullTitle} />
       {/* <Header></Header> */}
       <Section className={styles.heroSection}>
         <Container>
           <h1
             className={styles.heroSection__title}
             dangerouslySetInnerHTML={{
-              __html: title,
+              __html: siteMetadata.title,
             }}
           />
           <div className={'button ' + styles.heroSection__subscribeButtonContainer}>
@@ -70,18 +97,12 @@ export default function Home({ songs, mediaItem }) {
 }
 
 export async function getStaticProps() {
-  const { posts, pagination } = await getPaginatedPosts();
   const { songs } = await getAllSongs();
   const { mediaItem } = await getMediaItemBySlug('bannerbild-facing-waves-small');
 
   return {
     props: {
       songs,
-      posts,
-      pagination: {
-        ...pagination,
-        basePath: '/posts',
-      },
       mediaItem,
     },
   };

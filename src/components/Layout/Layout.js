@@ -23,7 +23,7 @@ const Layout = ({ children, hideHeaderFooter = false }) => {
 
   const helmetSettings = {
     defaultTitle: metadata.title,
-    titleTemplate: process.env.WORDPRESS_PLUGIN_SEO === true ? '%s' : `%s - ${metadata.title}`,
+    titleTemplate: process.env.WORDPRESS_PLUGIN_SEO === true ? '%s' : `%s`,
     ...helmetSettingsFromMetadata(metadata, {
       setTitle: false,
       link: [

@@ -12,32 +12,34 @@ import styles from 'styles/pages/Song.module.scss';
 import EmailSignupForm from 'components/EmailSignupForm';
 import { getMediaItemBySlug } from 'lib/media';
 
-export default function Song({ post, socialImage, mediaItem }) {
-  const { title, metaTitle, description } = post;
+export default function Song({ post, mediaItem }) {
+  const { title, description } = post;
 
-  const { metadata: siteMetadata = {}, homepage } = useSite();
+  const { metadata: siteMetadata = {} } = useSite();
 
   if (!post.og) {
     post.og = {};
   }
 
-  post.og.imageUrl = `${homepage}${socialImage}`;
-  post.og.imageSecureUrl = post.og.imageUrl;
+  post.og.imageUrl = `${post.featuredImage.sourceUrl}`;
+  post.og.imageSecureUrl = post.featuredImage.sourceUrl;
   post.og.imageWidth = 2000;
   post.og.imageHeight = 1000;
 
   const { metadata } = usePageMetadata({
     metadata: {
       ...post,
-      title: metaTitle,
-      description: description || post.og?.description || `Read more about ${title}`,
+      title: siteMetadata.title,
+      description: description || post.og?.description || `Listen to ${title} by Facing Waves`,
     },
   });
 
+  var fullTitle = title + ' | ' + siteMetadata.title;
+
   if (process.env.WORDPRESS_PLUGIN_SEO !== true) {
-    metadata.title = `${title} - ${siteMetadata.title}`;
-    metadata.og.title = metadata.title;
-    metadata.twitter.title = metadata.title;
+    metadata.title = fullTitle;
+    metadata.og.title = fullTitle;
+    metadata.twitter.title = fullTitle;
   }
 
   const helmetSettings = helmetSettingsFromMetadata(metadata);
@@ -53,7 +55,7 @@ export default function Song({ post, socialImage, mediaItem }) {
             className={styles.songBackgroundImage}
             width={post.featuredImage.width}
             height={post.featuredImage.height}
-            src={post.featuredImage.src}
+            src={post.featuredImage.sourceUrl}
             alt={post.featuredImage.alt || ''}
             srcSet={post.featuredImage.srcSet}
             sizes={'(max-width: 400px) 300px, 700px'}
