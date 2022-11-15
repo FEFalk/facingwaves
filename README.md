@@ -3,6 +3,9 @@
 This is an SPA for the music duo Facing Waves, which aims to present their portfolio as an artist and to create landing pages for Facebook ads.
 The app uses on React and Next.js, and is based on the package "Next.js WordPress Starter". It is made to be coupled up with a headless Wordpress site.
 
+Start Page:
+https://facingwavesmusic.com
+
 The website includes song pages that presents the cover art and a Spotify link for a song. The user interaction is tracked via Facebook Pixel, Facebook Conversion API and Matomo.
 
 Example song page: https://facingwavesmusic.com/songs/mar-jag-kanske-bra/
