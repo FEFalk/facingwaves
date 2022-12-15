@@ -9,17 +9,17 @@ const EmailSignupForm = ({ mediaItem, song }) => {
   const inputRefFName = useRef(null);
   var errorMessage = useRef(null);
   var successMessage = useRef(null);
-  const FB_ACCESS_TOKEN = process.env.NEXT_PUBLIC_FB_ACCESS_TOKEN;
+  // const FB_ACCESS_TOKEN = process.env.NEXT_PUBLIC_FB_ACCESS_TOKEN;
 
-  function getCookie(cname) {
-    return document.cookie.match('(^|;)\\s*' + cname + '\\s*=\\s*([^;]+)')?.pop() || '';
-  }
+  // function getCookie(cname) {
+  //   return document.cookie.match('(^|;)\\s*' + cname + '\\s*=\\s*([^;]+)')?.pop() || '';
+  // }
 
-  const getUserData = async () => {
-    const response = await fetch(window.location.origin + '/api/user');
-    const data = await response.json();
-    return data;
-  };
+  // const getUserData = async () => {
+  //   const response = await fetch(window.location.origin + '/api/user');
+  //   const data = await response.json();
+  //   return data;
+  // };
 
   const [showResponse, setShowResponse] = useState(false);
   function showResponseMessage() {
