@@ -97,47 +97,47 @@ const EmailSignupForm = ({ mediaItem, song }) => {
       setSubmittedTrue();
       showResponseMessage();
 
-      import('react-facebook-pixel')
-        .then((x) => x.default)
-        .then((ReactPixel) => {
-          ReactPixel.init('200487122108225'); // facebookPixelId
-          ReactPixel.track('CompleteRegistration');
-        });
+      // import('react-facebook-pixel')
+      //   .then((x) => x.default)
+      //   .then((ReactPixel) => {
+      //     ReactPixel.init('200487122108225'); // facebookPixelId
+      //     ReactPixel.track('CompleteRegistration');
+      //   });
 
-      var fbpCookie = getCookie('_fbp');
-      var fbcCookie = getCookie('_fbc') || null;
-      getUserData().then((data) => {
-        if (!fbcCookie && window.location.search.includes('fbclid=')) {
-          fbcCookie = 'fb.1.' + +new Date() + '.' + window.location.search.split('fbclid=')[1];
-        }
-        if (fbpCookie != null && fbpCookie.length > 0) {
-          var url = 'https://graph.facebook.com/v13.0/200487122108225/events?access_token=' + FB_ACCESS_TOKEN;
-          const postBody = {
-            data: [
-              {
-                event_name: 'CompleteRegistration',
-                event_time: Math.floor(Date.now() / 1000),
-                action_source: 'website',
-                event_source_url: window.location.href,
-                user_data: {
-                  fbp: fbpCookie,
-                  fbc: fbcCookie,
-                  client_user_agent: navigator.userAgent,
-                  client_ip_address: data.ip,
-                },
-              },
-            ],
-          };
-          const requestMetadata = {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(postBody),
-          };
-          fetch(url, requestMetadata).then((res) => res.json());
-        }
-      });
+      // var fbpCookie = getCookie('_fbp');
+      // var fbcCookie = getCookie('_fbc') || null;
+      // getUserData().then((data) => {
+      //   if (!fbcCookie && window.location.search.includes('fbclid=')) {
+      //     fbcCookie = 'fb.1.' + +new Date() + '.' + window.location.search.split('fbclid=')[1];
+      //   }
+      //   if (fbpCookie != null && fbpCookie.length > 0) {
+      //     var url = 'https://graph.facebook.com/v13.0/200487122108225/events?access_token=' + FB_ACCESS_TOKEN;
+      //     const postBody = {
+      //       data: [
+      //         {
+      //           event_name: 'CompleteRegistration',
+      //           event_time: Math.floor(Date.now() / 1000),
+      //           action_source: 'website',
+      //           event_source_url: window.location.href,
+      //           user_data: {
+      //             fbp: fbpCookie,
+      //             fbc: fbcCookie,
+      //             client_user_agent: navigator.userAgent,
+      //             client_ip_address: data.ip,
+      //           },
+      //         },
+      //       ],
+      //     };
+      //     const requestMetadata = {
+      //       method: 'POST',
+      //       headers: {
+      //         'Content-Type': 'application/json',
+      //       },
+      //       body: JSON.stringify(postBody),
+      //     };
+      //     fetch(url, requestMetadata).then((res) => res.json());
+      //   }
+      // });
     }
   };
 
