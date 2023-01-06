@@ -55,6 +55,14 @@ export const QUERY_SONG_BY_SLUG = gql`
       slug
       song {
         releaseDate
+        coverArt {
+          altText
+          caption
+          sourceUrl
+          srcSet
+          sizes
+          id
+        }
         spotifyUrl
         appleMusicUrl
       }

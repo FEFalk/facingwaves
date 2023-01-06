@@ -20,11 +20,13 @@ export default function Song({ post, mediaItem }) {
   if (!post.og) {
     post.og = {};
   }
-
-  post.og.imageUrl = `${post.featuredImage.sourceUrl}`;
-  post.og.imageSecureUrl = post.featuredImage.sourceUrl;
-  post.og.imageWidth = 2000;
-  post.og.imageHeight = 1000;
+  if (post.song.coverArt != null)
+  {
+    post.og.imageUrl = `${post.song.coverArt.sourceUrl}`;
+    post.og.imageSecureUrl = post.song.coverArt.sourceUrl;
+    post.og.imageWidth = 2000;
+    post.og.imageHeight = 1000;
+  }
 
   const { metadata } = usePageMetadata({
     metadata: {
@@ -48,16 +50,16 @@ export default function Song({ post, mediaItem }) {
     <Layout hideHeaderFooter={true}>
       <Helmet {...helmetSettings} />
 
-      {post.featuredImage && (
+      {post.song.coverArt && (
         <div className={styles.songBackgroundContainer}>
           {/* <div className={styles.songBackgroundImage} style={{backgroundImage: "url(" + post.featuredImage.sourceUrl + ")"}}> */}
           <img
             className={styles.songBackgroundImage}
-            width={post.featuredImage.width}
-            height={post.featuredImage.height}
-            src={post.featuredImage.sourceUrl}
-            alt={post.featuredImage.alt || ''}
-            srcSet={post.featuredImage.srcSet}
+            width={post.song.coverArt.width}
+            height={post.song.coverArt.height}
+            src={post.song.coverArt.sourceUrl}
+            alt={post.song.coverArt.alt || ''}
+            srcSet={post.song.coverArt.srcSet}
             sizes={'(max-width: 400px) 300px, 700px'}
           />
           <div className={styles.songBackgroundBackdrop}></div>
@@ -74,7 +76,6 @@ export default function Song({ post, mediaItem }) {
 
 export async function getStaticProps({ params = {} } = {}) {
   const { post } = await getSongBySlug(params?.slug);
-
   const socialImage = `${process.env.OG_IMAGE_DIRECTORY}/${params?.slug}.png`;
 
   const { mediaItem } = await getMediaItemBySlug('bannerbild-facing-waves-small');

@@ -100,11 +100,11 @@ const SongCard = ({ song, className }) => {
   return (
     <div className={containerClassName.toString()}>
       <div className={styles.songCardHeader} onClick={(event) => handleClickStream(event, song.song.spotifyUrl)}>
-        {song.featuredImage && (
+        {song.song.coverArt && (
           <Image
-            {...song.featuredImage}
-            src={song.featuredImage.sourceUrl}
-            dangerouslySetInnerHTML={song.featuredImage.caption}
+            {...song.song.coverArt}
+            src={song.song.coverArt.sourceUrl}
+            dangerouslySetInnerHTML={song.song.coverArt.caption}
           />
         )}
       </div>
