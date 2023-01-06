@@ -89,14 +89,14 @@ const SongTeaser = ({ song, className }) => {
     }
   }
   containerClassName.addIf(className, className);
-  return (
+  return Date.parse(song.song.releaseDate) <= Date.now() ? (
     <button className={containerClassName.toString()} onClick={handleClick}>
       <div className={styles.songTeaserHeader}>
-        {song.featuredImage && (
+        {song.song.coverArt && (
           <Image
-            {...song.featuredImage}
-            src={song.featuredImage.sourceUrl}
-            dangerouslySetInnerHTML={song.featuredImage.caption}
+            {...song.song.coverArt}
+            src={song.song.coverArt.sourceUrl}
+            dangerouslySetInnerHTML={song.song.coverArt.caption}
           />
         )}
       </div>
@@ -121,6 +121,39 @@ const SongTeaser = ({ song, className }) => {
         </div>
       </div>
     </button>
+  ) : (
+    <div className={styles.songTeaserContainerReleaseDate}>
+      <div className={styles.songTeaserHeader}>
+        {song.song.coverArt && (
+          <Image
+            {...song.song.coverArt}
+            src={song.song.coverArt.sourceUrl}
+            dangerouslySetInnerHTML={song.song.coverArt.caption}
+          />
+        )}
+      </div>
+      <div className={styles.songTeaserFooter}>
+        <div className={styles.songTeaserHeadingContainer}>
+          <h2
+            className={styles.songTeaserTitle}
+            dangerouslySetInnerHTML={{
+              __html: song.title,
+            }}
+          />
+          <span className={styles.songTeaserArtistName}>Facing Waves</span>
+          <div className={styles.songTeaserCaretBorder}></div>
+          <div className={styles.songTeaserCaret}></div>
+        </div>
+        <div className={styles.songTeaserLinkItemReleaseDate}>
+          <span
+            className={styles.songTeaserReleaseDate}
+            dangerouslySetInnerHTML={{
+              __html: 'Releases ' + song.song.releaseDate,
+            }}
+          ></span>
+        </div>
+      </div>
+    </div>
   );
 };
 

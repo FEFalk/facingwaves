@@ -8,8 +8,13 @@ export const QUERY_ALL_SONGS = gql`
           id
           content
           date
-          featuredImage {
-            node {
+          modified
+          databaseId
+          title
+          slug
+          song {
+            releaseDate
+            coverArt {
               altText
               caption
               sourceUrl
@@ -17,13 +22,6 @@ export const QUERY_ALL_SONGS = gql`
               sizes
               id
             }
-          }
-          modified
-          databaseId
-          title
-          slug
-          song {
-            releaseDate
             spotifyUrl
             appleMusicUrl
           }
@@ -39,16 +37,6 @@ export const QUERY_SONG_BY_SLUG = gql`
       id
       content
       date
-      featuredImage {
-        node {
-          altText
-          caption
-          sourceUrl
-          srcSet
-          sizes
-          id
-        }
-      }
       modified
       databaseId
       title

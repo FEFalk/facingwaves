@@ -1,6 +1,6 @@
 @import "styles/settings/__settings";
 
-.songTeaser {
+.songTeaser, .songTeaserContainerReleaseDate {
   width: 100%;
   padding: 0;
   z-index: 2;
@@ -25,6 +25,10 @@
   }
 }
 
+.songTeaserContainerReleaseDate {
+  cursor: auto;
+}
+
 .songTeaserTitle {
   font-size: 12px;
   margin-top: 0;
@@ -35,9 +39,6 @@
     margin-top: 0;
     margin-bottom: 0.5rem;
   }
-}
-
-.songTeaserHeader {
 }
 
 .songTeaserFooter {
@@ -109,7 +110,7 @@
   width: 35%;
 }
 
-.songTeaserLinkItem {
+.songTeaserLinkItem, .songTeaserLinkItemReleaseDate {
   display: flex;
   min-height: 5rem;
   justify-content: space-between;
@@ -149,6 +150,23 @@
   }
 }
 
+.songTeaserLinkItemReleaseDate{
+  padding: 1rem;
+  justify-content: center;
+  cursor: auto;
+
+  &:hover{
+    background-color: #252525;
+
+    .songTeaserPlayIcon {
+      border-left: 8px solid #00d95a;
+    }
+    .songTeaserPlayText {
+      color: #00d95a;
+    }
+  }
+}
+
 .songTeaserPlay {
   width: 25%;
   display: flex;
@@ -179,4 +197,14 @@
   margin-bottom: -1px;
   line-height: 1;
   transition: ease-in-out 0.1s all;
+}
+
+.songTeaserReleaseDate {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: -1px;
+  line-height: 1;
+  transition: ease-in-out 0.1s all;
+  text-align: center;
 }
