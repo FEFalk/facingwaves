@@ -20,8 +20,7 @@ export default function Song({ post, mediaItem }) {
   if (!post.og) {
     post.og = {};
   }
-  if (post.song.coverArt != null)
-  {
+  if (post.song.coverArt != null) {
     post.og.imageUrl = `${post.song.coverArt.sourceUrl}`;
     post.og.imageSecureUrl = post.song.coverArt.sourceUrl;
     post.og.imageWidth = 2000;
