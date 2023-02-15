@@ -104,6 +104,8 @@ const SongCard = ({ song, className }) => {
           <Image
             {...song.song.coverArt}
             src={song.song.coverArt.sourceUrl}
+            width={650}
+            height={650}
             dangerouslySetInnerHTML={song.song.coverArt.caption}
           />
         )}
@@ -125,7 +127,12 @@ const SongCard = ({ song, className }) => {
           id={'play-spotify'}
           onClick={(event) => handleClickStream(event, song.song.spotifyUrl)}
         >
-          <img className={styles.songCardStreamingLogo} src={'/images/spotify-logo-green_small.png'} />
+          <Image
+            src={'/images/spotify-logo-green_small.png'}
+            className={styles.songCardStreamingLogo}
+            width={120}
+            height={38}
+          />
           <div className={styles.songCardPlay}>
             <i className={styles.songCardPlayIcon}></i>
             <span className={styles.songCardPlayText}>Play</span>
@@ -136,7 +143,28 @@ const SongCard = ({ song, className }) => {
           id={'play-apple-music'}
           onClick={(event) => handleClickStream(event, song.song.appleMusicUrl)}
         >
-          <img className={styles.songCardAppleMusicLogo} src={'/images/apple-music-logo_small.png'} />
+          <Image
+            src={'/images/apple-music-logo_small.png'}
+            className={styles.songCardAppleMusicLogo}
+            width={144}
+            height={33}
+          />
+          <div className={styles.songCardPlay}>
+            <i className={styles.songCardPlayIcon}></i>
+            <span className={styles.songCardPlayText}>Play</span>
+          </div>
+        </button>
+        <button
+          className={styles.songCardLinkItem + ' ' + styles.songCardLinkItemYouTube}
+          id={'play-youtube'}
+          onClick={(event) => handleClickStream(event, song.song.youtubeUrl)}
+        >
+          <Image
+            src={'/images/youtube-logo_small.png'}
+            className={styles.songCardYouTubeLogo}
+            width={212}
+            height={47}
+          />
           <div className={styles.songCardPlay}>
             <i className={styles.songCardPlayIcon}></i>
             <span className={styles.songCardPlayText}>Play</span>
@@ -144,7 +172,7 @@ const SongCard = ({ song, className }) => {
         </button>
         <button className={styles.songCardLinkItem} id={'email-subscribe'} onClick={handleClickEmail}>
           <div className={styles.songCardLinkItem__nameContainer}>
-            <img className={styles.songCardGmailLogo} src={'/images/gmail.png'} />
+            <Image src={'/images/gmail.png'} className={styles.songCardStreamingLogo} width={48} height={48} />
             <span className={styles.songCardGmailText}>Email</span>
           </div>
           <div className={styles.songCardPlay}>

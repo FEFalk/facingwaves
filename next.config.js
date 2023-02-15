@@ -16,6 +16,10 @@ module.exports = withPlugins([[indexSearch], [feed], [sitemap], [socialImages]],
   // diagnostic purposes. By default is set to false.
   // verbose: true,
 
+  images: {
+    domains: ['wordpress.facingwavesmusic.com'],
+  },
+
   env: {
     WORDPRESS_GRAPHQL_ENDPOINT: process.env.WORDPRESS_GRAPHQL_ENDPOINT,
     WORDPRESS_MENU_LOCATION_NAVIGATION: process.env.WORDPRESS_MENU_LOCATION_NAVIGATION || 'PRIMARY',
