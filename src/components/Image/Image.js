@@ -10,7 +10,6 @@ const Image = ({
   height = 100,
   src,
   alt,
-  srcSet,
   dangerouslySetInnerHTML,
   priority = false,
 }) => {
@@ -22,7 +21,6 @@ const Image = ({
     <figure className={imageClassName.toString()}>
       <div className={styles.featuredImageImg}>
         <NextImage src={src} alt={alt || ''} priority={priority} width={width} height={height} />
-        
         {/* <img
           width={width}
           height={height}
