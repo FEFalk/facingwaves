@@ -118,7 +118,12 @@ const SongCard = ({ song, className }) => {
               __html: song.title,
             }}
           />
-          <span className={styles.songCardArtistName}>Facing Waves</span>
+          <span
+            className={styles.songCardArtistName}
+            dangerouslySetInnerHTML={{
+              __html: song.song.artist,
+            }}
+          />
           <div className={styles.songCardCaretBorder}></div>
           <div className={styles.songCardCaret}></div>
         </div>
@@ -154,22 +159,24 @@ const SongCard = ({ song, className }) => {
             <span className={styles.songCardPlayText}>Play</span>
           </div>
         </button>
-        <button
-          className={styles.songCardLinkItem + ' ' + styles.songCardLinkItemYouTube}
-          id={'play-youtube'}
-          onClick={(event) => handleClickStream(event, song.song.youtubeUrl)}
-        >
-          <Image
-            src={'/images/youtube-logo_small.png'}
-            className={styles.songCardYouTubeLogo}
-            width={212}
-            height={47}
-          />
-          <div className={styles.songCardPlay}>
-            <i className={styles.songCardPlayIcon}></i>
-            <span className={styles.songCardPlayText}>Play</span>
-          </div>
-        </button>
+        {song.song.youtubeUrl && (
+          <button
+            className={styles.songCardLinkItem + ' ' + styles.songCardLinkItemYouTube}
+            id={'play-youtube'}
+            onClick={(event) => handleClickStream(event, song.song.youtubeUrl)}
+          >
+            <Image
+              src={'/images/youtube-logo_small.png'}
+              className={styles.songCardYouTubeLogo}
+              width={212}
+              height={47}
+            />
+            <div className={styles.songCardPlay}>
+              <i className={styles.songCardPlayIcon}></i>
+              <span className={styles.songCardPlayText}>Play</span>
+            </div>
+          </button>
+        )}
         <button className={styles.songCardLinkItem} id={'email-subscribe'} onClick={handleClickEmail}>
           <div className={styles.songCardLinkItem__nameContainer}>
             <Image src={'/images/gmail.png'} className={styles.songCardStreamingLogo} width={48} height={48} />

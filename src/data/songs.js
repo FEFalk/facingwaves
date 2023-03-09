@@ -13,6 +13,7 @@ export const QUERY_ALL_SONGS = gql`
           title
           slug
           song {
+            artist
             releaseDate
             coverArt {
               altText
@@ -43,6 +44,7 @@ export const QUERY_SONG_BY_SLUG = gql`
       title
       slug
       song {
+        artist
         releaseDate
         coverArt {
           altText
