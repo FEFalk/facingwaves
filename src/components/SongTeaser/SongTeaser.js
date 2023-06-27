@@ -95,8 +95,8 @@ const SongTeaser = ({ song, className }) => {
         {song.song.coverArt && (
           <Image
             {...song.song.coverArt}
-            width={300}
-            height={300}
+            width={400}
+            height={400}
             src={song.song.coverArt.sourceUrl}
             dangerouslySetInnerHTML={song.song.coverArt.caption}
           />
