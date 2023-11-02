@@ -88,13 +88,13 @@ const SongCard = ({ song, className }) => {
       window.open(streamUrl, '_blank');
     }
   };
-  function handleClickEmail(e) {
-    e.preventDefault();
-    var element = document.getElementById('email-subscribe-form');
-    element.style.opacity = 1;
-    element.style.pointerEvents = 'all';
-    push(['trackEvent', song.title, 'Email button clicked']);
-  }
+  // function handleClickEmail(e) {
+  //   e.preventDefault();
+  //   var element = document.getElementById('email-subscribe-form');
+  //   element.style.opacity = 1;
+  //   element.style.pointerEvents = 'all';
+  //   push(['trackEvent', song.title, 'Email button clicked']);
+  // }
 
   containerClassName.addIf(className, className);
   return (
@@ -143,7 +143,7 @@ const SongCard = ({ song, className }) => {
             <span className={styles.songCardPlayText}>Play</span>
           </div>
         </button>
-        <button
+        {/* <button
           className={styles.songCardLinkItem + ' ' + styles.songCardLinkItemAppleMusic}
           id={'play-apple-music'}
           onClick={(event) => handleClickStream(event, song.song.appleMusicUrl)}
@@ -176,7 +176,7 @@ const SongCard = ({ song, className }) => {
               <span className={styles.songCardPlayText}>Play</span>
             </div>
           </button>
-        )}
+        )} 
         <button className={styles.songCardLinkItem} id={'email-subscribe'} onClick={handleClickEmail}>
           <div className={styles.songCardLinkItem__nameContainer}>
             <Image src={'/images/gmail.png'} className={styles.songCardStreamingLogo} width={48} height={48} />
@@ -185,7 +185,7 @@ const SongCard = ({ song, className }) => {
           <div className={styles.songCardPlay}>
             <span className={styles.songCardPlayText}>Subscribe</span>
           </div>
-        </button>
+        </button>*/}
       </div>
     </div>
   );
