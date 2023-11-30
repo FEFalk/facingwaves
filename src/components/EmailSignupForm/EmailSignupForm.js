@@ -176,7 +176,6 @@ const EmailSignupForm = ({ mediaItem, song }) => {
           srcSet={mediaItem.srcSet}
           width={600}
           height={600}
-          dangerouslySetInnerHTML={mediaItem.caption}
         />
         <form
           onSubmit={subscribeUser}

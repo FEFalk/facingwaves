@@ -98,7 +98,7 @@ export default function Home({ songs, mediaItem }) {
 
 export async function getStaticProps() {
   const { songs } = await getAllSongs();
-  const { mediaItem } = await getMediaItemBySlug('bannerbild-facing-waves-small');
+  const { mediaItem } = await getMediaItemBySlug('bannerwide_smaller');
 
   return {
     props: {

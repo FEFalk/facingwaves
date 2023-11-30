@@ -39,8 +39,32 @@
     border-top-right-radius: 0;
     @media (max-width:500px){
         display: flex;
-        position: fixed;
+        position: relative;
         top: 0;
         z-index: 2;
       }
+}
+
+.songLyricsContainer {
+    background-color: #1b1b1b; /* Consistent with your song background */
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.songLyricsContent {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+.songLyricsTitle {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.songLyricsText {
+    font-size: 1em;
+    line-height: 1.5;
 }

@@ -11,9 +11,9 @@ import SongCard from 'components/SongCard';
 import styles from 'styles/pages/Song.module.scss';
 // import EmailSignupForm from 'components/EmailSignupForm';
 import { getMediaItemBySlug } from 'lib/media';
-// import BehindTheMusic from 'components/BehindTheMusic';
+import BehindTheMusic from 'components/BehindTheMusic';
 
-export default function Song({ post }) {
+export default function Song({ post, mediaItem }) {
   const { title, description } = post;
 
   const { metadata: siteMetadata = {} } = useSite();
@@ -70,7 +70,7 @@ export default function Song({ post }) {
         <SongCard song={post} />
       </div>
       {/* <EmailSignupForm mediaItem={mediaItem} song={post} /> */}
-      {/* <BehindTheMusic mediaItem={mediaItem} song={post} /> */}
+      <BehindTheMusic mediaItem={mediaItem} song={post} />
     </Layout>
   );
 }

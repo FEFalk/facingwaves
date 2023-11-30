@@ -26,6 +26,7 @@ export const QUERY_ALL_SONGS = gql`
             spotifyUrl
             appleMusicUrl
             youtubeUrl
+            behindTheMusic
           }
         }
       }
@@ -57,6 +58,7 @@ export const QUERY_SONG_BY_SLUG = gql`
         spotifyUrl
         appleMusicUrl
         youtubeUrl
+        behindTheMusic
       }
     }
   }
