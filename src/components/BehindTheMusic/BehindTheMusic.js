@@ -3,12 +3,17 @@ import styles from './BehindTheMusic.module.scss';
 import Image from 'components/Image';
 import { useState } from 'react';
 import { convertClick } from 'lib/conversion';
+import { push } from '@socialgouv/matomo-next';
 
 const BehindTheMusic = ({ mediaItem, song }) => {
   // Initialize the state to false, as the content is not expanded initially
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleClickBehindTheMusic = () => {
+    if (isExpanded) {
+      return;
+    }
+    push(['trackEvent', song.title, 'About the song Click']);
     // Toggle the isExpanded state between true and false
     setIsExpanded(true);
     var scrollDiv = document.getElementById('behind-the-music').offsetTop;
