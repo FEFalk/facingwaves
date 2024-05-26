@@ -1,21 +1,23 @@
 import { Helmet } from 'react-helmet';
 import useSite from 'hooks/use-site';
 import { getAllSongs } from 'lib/songs';
+import { getHomePage } from 'lib/pages';
 import { WebsiteJsonLd } from 'lib/json-ld';
 
 import Layout from 'components/Layout';
-import Section from 'components/Section';
-import Container from 'components/Container';
-import SongTeaser from 'components/SongTeaser';
 import EmailSignupForm from 'components/EmailSignupForm';
+import Hero from 'components/Hero';
+import Releases from 'components/Releases';
 import { getMediaItemBySlug } from 'lib/media';
 import { push } from '@socialgouv/matomo-next';
 import usePageMetadata from 'hooks/use-page-metadata';
 import { helmetSettingsFromMetadata } from 'lib/site';
+import HorizontalCollage from 'components/HorizontalCollage';
+// import { easeIn, easeInOut, motion, useInView, useScroll, useTransform } from 'framer-motion';
 
-import styles from 'styles/pages/Home.module.scss';
+// import styles from 'styles/pages/Home.module.scss';
 
-export default function Home({ songs, mediaItem }) {
+export default function Home({ homePage, songs, mediaItem }) {
   const { metadata: siteMetadata = {} } = useSite();
   var post = {};
 
@@ -56,52 +58,26 @@ export default function Home({ songs, mediaItem }) {
 
       <WebsiteJsonLd siteTitle={fullTitle} />
       {/* <Header></Header> */}
-      <Section className={styles.heroSection}>
-        <Container>
-          <h1
-            className={styles.heroSection__title}
-            dangerouslySetInnerHTML={{
-              __html: siteMetadata.title,
-            }}
-          />
-          <div className={'button ' + styles.heroSection__subscribeButtonContainer}>
-            <button className={'button ' + styles.heroSection__subscribeButton} onClick={handleClickEmail}>
-              SUBSCRIBE
-            </button>
-          </div>
-          <div className={styles.heroSection__scrollDown}>
-            <div className={styles.heroSection__scrollDownMousey}>
-              <div className={styles.heroSection__scrollDownScroller}></div>
-            </div>
-          </div>
-        </Container>
-      </Section>
 
-      <Section className={styles.releases}>
-        <Container>
-          <h2 className={styles.releases__title}>RELEASES</h2>
-          <ul className={styles.teaserList}>
-            {songs.map((song) => {
-              return (
-                <li key={song.slug} className={styles.teaser}>
-                  <SongTeaser song={song} />
-                </li>
-              );
-            })}
-          </ul>
-        </Container>
-      </Section>
+      <Hero homePage={homePage} />
+
+      <HorizontalCollage videos={homePage.reels} />
+
+      <Releases songs={songs} />
+
       <EmailSignupForm mediaItem={mediaItem} />
     </Layout>
   );
 }
 
 export async function getStaticProps() {
+  const { homePage } = await getHomePage();
   const { songs } = await getAllSongs();
   const { mediaItem } = await getMediaItemBySlug('bannerwide_smaller');
 
   return {
     props: {
+      homePage,
       songs,
       mediaItem,
     },

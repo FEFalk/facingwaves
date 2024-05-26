@@ -3,16 +3,7 @@ import ClassName from 'models/classname';
 import styles from './Image.module.scss';
 import NextImage from 'next/image';
 
-const Image = ({
-  children,
-  className,
-  width = 100,
-  height = 100,
-  src,
-  alt,
-  dangerouslySetInnerHTML,
-  priority = false,
-}) => {
+const Image = ({ children, className, width = 100, height = 100, src, alt, dangerouslySetInnerHTML }) => {
   const imageClassName = new ClassName(styles.image);
 
   imageClassName.addIf(className, className);
@@ -20,7 +11,7 @@ const Image = ({
   return (
     <figure className={imageClassName.toString()}>
       <div className={styles.featuredImageImg}>
-        <NextImage src={src} alt={alt || ''} priority={priority} width={width} height={height} />
+        <NextImage src={src} alt={alt || ''} width={width} height={height} />
         {/* <img
           width={width}
           height={height}

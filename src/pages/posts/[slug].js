@@ -118,7 +118,7 @@ export default function Post({ post, socialImage, relatedPosts }) {
                 <span>
                   More from{' '}
                   <Link href={relatedPostsTitle.link}>
-                    <a>{relatedPostsTitle.name}</a>
+                    {relatedPostsTitle.name}
                   </Link>
                 </span>
               ) : (
@@ -128,7 +128,7 @@ export default function Post({ post, socialImage, relatedPosts }) {
                 {relatedPostsList.map((post) => (
                   <li key={post.title}>
                     <Link href={postPathBySlug(post.slug)}>
-                      <a>{post.title}</a>
+                      {post.title}
                     </Link>
                   </li>
                 ))}

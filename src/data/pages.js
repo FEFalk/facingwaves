@@ -1,5 +1,27 @@
 import { gql } from '@apollo/client';
 
+export const QUERY_HOME_PAGE = gql`
+  query HomePage {
+    nodeByUri(uri: "/") {
+      ... on Page {
+        startPageFields {
+          heroImage {
+            sourceUrl
+            srcSet
+          }
+          logo {
+            sourceUrl
+            srcSet
+          }
+          reels {
+            mediaItemUrl
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const QUERY_ALL_PAGES = gql`
   {
     pages(first: 10000, where: { hasPassword: false }) {

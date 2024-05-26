@@ -99,6 +99,7 @@ const SongTeaser = ({ song, className }) => {
             height={400}
             src={song.song.coverArt.sourceUrl}
             dangerouslySetInnerHTML={song.song.coverArt.caption}
+            className={styles.songTeaserImage}
           />
         )}
       </div>

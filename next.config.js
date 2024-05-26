@@ -17,13 +17,19 @@ module.exports = withPlugins([[indexSearch], [feed], [sitemap], [socialImages]],
   // verbose: true,
 
   images: {
-    domains: ['wordpress.facingwavesmusic.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'wordpress.facingwavesmusic.com',
+        pathname: '/**',
+      },
+    ],
   },
 
   env: {
     WORDPRESS_GRAPHQL_ENDPOINT: process.env.WORDPRESS_GRAPHQL_ENDPOINT,
     WORDPRESS_MENU_LOCATION_NAVIGATION: process.env.WORDPRESS_MENU_LOCATION_NAVIGATION || 'PRIMARY',
-    WORDPRESS_PLUGIN_SEO: parseEnvValue(process.env.WORDPRESS_PLUGIN_SEO, false),
+    // WORDPRESS_PLUGIN_SEO: parseEnvValue(process.env.WORDPRESS_PLUGIN_SEO, false),
 
     // The image directory for open graph images will be saved at the location above
     // with `public` prepended. By default, images will be saved at /public/images/og

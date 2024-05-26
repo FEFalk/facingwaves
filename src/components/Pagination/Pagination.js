@@ -45,64 +45,66 @@ const Pagination = ({ pagesCount, currentPage, basePath, addCanonical = true }) 
 
   const pages = getPages();
 
-  return (
-    <>
-      <Helmet>
-        {addCanonical && !hasPreviousPage && <link rel="canonical" href={`${homepage}${basePath}`} />}
-        {hasPreviousPage && <link rel="prev" href={`${homepage}${path}${currentPage - 1}`} />}
-        {hasNextPage && <link rel="next" href={`${homepage}${path}${currentPage + 1}`} />}
-      </Helmet>
+  return <>
+    <Helmet>
+      {addCanonical && !hasPreviousPage && <link rel="canonical" href={`${homepage}${basePath}`} />}
+      {hasPreviousPage && <link rel="prev" href={`${homepage}${path}${currentPage - 1}`} />}
+      {hasNextPage && <link rel="next" href={`${homepage}${path}${currentPage + 1}`} />}
+    </Helmet>
 
-      <nav className={styles.nav} role="navigation" aria-label="Pagination Navigation">
-        {hasPreviousPage && (
-          <Link href={`${path}${currentPage - 1}`}>
-            <a className={styles.prev} aria-label="Goto Previous Page">
-              <PreviousIcon /> Previous
-            </a>
-          </Link>
+    <nav className={styles.nav} role="navigation" aria-label="Pagination Navigation">
+      {hasPreviousPage && (
+        (<Link
+          href={`${path}${currentPage - 1}`}
+          className={styles.prev}
+          aria-label="Goto Previous Page">
+
+          <PreviousIcon />Previous
+        </Link>)
+      )}
+
+      <ul className={styles.pages}>
+        {hasPrevDots && (
+          <li className={styles.dots}>
+            <Dots aria-label={`Navigation to pages 1-${pages[0] - 1} hidden`} />
+          </li>
         )}
-
-        <ul className={styles.pages}>
-          {hasPrevDots && (
-            <li className={styles.dots}>
-              <Dots aria-label={`Navigation to pages 1-${pages[0] - 1} hidden`} />
+        {pages.map((page) => {
+          const active = page === currentPage;
+          return active ? (
+            <li key={page}>
+              <span className={styles.active} aria-label={`Current Page, Page ${page}`} aria-current="true">
+                {page}
+              </span>
             </li>
-          )}
-          {pages.map((page) => {
-            const active = page === currentPage;
-            return active ? (
-              <li key={page}>
-                <span className={styles.active} aria-label={`Current Page, Page ${page}`} aria-current="true">
-                  {page}
-                </span>
-              </li>
-            ) : (
-              <li key={page}>
-                <Link href={`${path}${page}`}>
-                  <a aria-label={`Goto Page ${page}`}>
-                    <span>{page}</span>
-                  </a>
-                </Link>
-              </li>
-            );
-          })}
-          {hasNextDots && (
-            <li className={styles.dots}>
-              <Dots aria-label={`Navigation to pages ${pages[pages.length - 1] + 1}-${pagesCount} hidden`} />
-            </li>
-          )}
-        </ul>
+          ) : (
+            <li key={page}>
+              <Link href={`${path}${page}`} aria-label={`Goto Page ${page}`}>
 
-        {hasNextPage && (
-          <Link href={`${path}${currentPage + 1}`}>
-            <a className={styles.next} aria-label="Goto Next Page">
-              Next <NextIcon />
-            </a>
-          </Link>
+                <span>{page}</span>
+
+              </Link>
+            </li>
+          );
+        })}
+        {hasNextDots && (
+          <li className={styles.dots}>
+            <Dots aria-label={`Navigation to pages ${pages[pages.length - 1] + 1}-${pagesCount} hidden`} />
+          </li>
         )}
-      </nav>
-    </>
-  );
+      </ul>
+
+      {hasNextPage && (
+        (<Link
+          href={`${path}${currentPage + 1}`}
+          className={styles.next}
+          aria-label="Goto Next Page">
+          Next<NextIcon />
+
+        </Link>)
+      )}
+    </nav>
+  </>;
 };
 
 export default Pagination;

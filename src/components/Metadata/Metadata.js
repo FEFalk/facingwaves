@@ -33,8 +33,8 @@ const Metadata = ({ className, author, date, categories, options = DEFAULT_METAD
               />
             )}
             By{' '}
-            <Link href={authorPathByName(author.name)}>
-              <a rel="author">{author.name}</a>
+            <Link href={authorPathByName(author.name)} rel="author">
+              {author.name}
             </Link>
           </address>
         </li>
@@ -51,7 +51,7 @@ const Metadata = ({ className, author, date, categories, options = DEFAULT_METAD
           {compactCategories && (
             <p title={categories.map(({ name }) => name).join(', ')}>
               <Link href={categoryPathBySlug(categories[0].slug)}>
-                <a>{categories[0].name}</a>
+                {categories[0].name}
               </Link>
               {categories.length > 1 && ' and more'}
             </p>
@@ -62,7 +62,7 @@ const Metadata = ({ className, author, date, categories, options = DEFAULT_METAD
                 return (
                   <li key={category.slug}>
                     <Link href={categoryPathBySlug(category.slug)}>
-                      <a>{category.name}</a>
+                      {category.name}
                     </Link>
                   </li>
                 );

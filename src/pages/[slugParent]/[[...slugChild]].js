@@ -88,7 +88,7 @@ export default function Page({ page, breadcrumbs }) {
                     return (
                       <li key={child.id}>
                         <Link href={child.uri}>
-                          <a>{child.title}</a>
+                          {child.title}
                         </Link>
                       </li>
                     );

@@ -1,6 +1,20 @@
 import { getApolloClient } from 'lib/apollo-client';
 
-import { QUERY_ALL_PAGES, QUERY_PAGE_BY_URI, QUERY_PAGE_SEO_BY_URI } from 'data/pages';
+import { QUERY_HOME_PAGE, QUERY_ALL_PAGES, QUERY_PAGE_BY_URI, QUERY_PAGE_SEO_BY_URI } from 'data/pages';
+
+export async function getHomePage() {
+  const apolloClient = getApolloClient();
+
+  const data = await apolloClient.query({
+    query: QUERY_HOME_PAGE,
+  });
+
+  const homePage = data?.data.nodeByUri.startPageFields;
+
+  return {
+    homePage: homePage,
+  };
+}
 
 /**
  * pagePathBySlug
