@@ -104,6 +104,11 @@ export default function Page({ page, breadcrumbs }) {
 export async function getStaticProps({ params = {} } = {}) {
   const { slugParent, slugChild } = params;
 
+  // Validate params
+  if (typeof slugParent !== 'string') {
+    throw new Error('Invalid slugParent');
+  }
+
   // We can use the URI to look up our page and subsequently its ID, so
   // we can first contruct our URI from the page params
 
@@ -117,6 +122,11 @@ export async function getStaticProps({ params = {} } = {}) {
   }
 
   const { page } = await getPageByUri(pageUri);
+
+  // Handle case where page is not found
+  if (!page) {
+    return { notFound: true };
+  }
 
   // In order to show the proper breadcrumbs, we need to find the entire
   // tree of pages. Rather than querying every segment, the query should
