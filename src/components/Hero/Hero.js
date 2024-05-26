@@ -6,7 +6,7 @@ import Section from 'components/Section';
 import Container from 'components/Container';
 
 import styles from './Hero.module.scss';
-import { easeIn, easeInOut, motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
 const Hero = ({ homePage, className }) => {

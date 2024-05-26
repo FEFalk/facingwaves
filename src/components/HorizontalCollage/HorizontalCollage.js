@@ -1,7 +1,7 @@
 import ClassName from 'models/classname';
 import styles from './HorizontalCollage.module.scss';
 
-import { easeIn, easeInOut, motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
 const HorizontalCollage = ({ videos, className }) => {
@@ -20,7 +20,7 @@ const HorizontalCollage = ({ videos, className }) => {
   const xTransformReel = useTransform(scrollYProgress, [0.1, 1], ['0%', '-1000%']);
   const opacityCollage = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
 
-  const isCollageInView = useInView(collageContainerRef);
+  // const isCollageInView = useInView(collageContainerRef);
 
   return (
     <section className={styles.horizontalCollage} ref={collageContainerRef}>

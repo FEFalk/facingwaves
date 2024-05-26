@@ -9,7 +9,7 @@ import EmailSignupForm from 'components/EmailSignupForm';
 import Hero from 'components/Hero';
 import Releases from 'components/Releases';
 import { getMediaItemBySlug } from 'lib/media';
-import { push } from '@socialgouv/matomo-next';
+// import { push } from '@socialgouv/matomo-next';
 import usePageMetadata from 'hooks/use-page-metadata';
 import { helmetSettingsFromMetadata } from 'lib/site';
 import HorizontalCollage from 'components/HorizontalCollage';
@@ -44,13 +44,13 @@ export default function Home({ homePage, songs, mediaItem }) {
 
   const helmetSettings = helmetSettingsFromMetadata(metadata);
 
-  function handleClickEmail(e) {
-    e.preventDefault();
-    var element = document.getElementById('email-subscribe-form');
-    element.style.opacity = 1;
-    element.style.pointerEvents = 'all';
-    push(['trackEvent', 'Startpage', 'Email button clicked']);
-  }
+  // function handleClickEmail(e) {
+  //   e.preventDefault();
+  //   var element = document.getElementById('email-subscribe-form');
+  //   element.style.opacity = 1;
+  //   element.style.pointerEvents = 'all';
+  //   push(['trackEvent', 'Startpage', 'Email button clicked']);
+  // }
 
   return (
     <Layout>
