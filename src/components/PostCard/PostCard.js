@@ -35,14 +35,12 @@ const PostCard = ({ post, options = {} }) => {
     <div className={postCardStyle}>
       {isSticky && <FaMapPin aria-label="Sticky Post" />}
       <Link href={postPathBySlug(slug)}>
-
         <h3
           className={styles.postCardTitle}
           dangerouslySetInnerHTML={{
             __html: title,
           }}
         />
-
       </Link>
       <Metadata className={styles.postCardMetadata} {...metadata} />
       {excerpt && (

@@ -35,7 +35,7 @@ export function _createApolloClient() {
     link: retryLink.concat(
       new HttpLink({
         uri: removeLastTrailingSlash(process.env.WORDPRESS_GRAPHQL_ENDPOINT),
-      })
+      }),
     ),
     cache: new InMemoryCache(),
   });

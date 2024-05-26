@@ -27,7 +27,7 @@ export default async (req, res) => {
           'Content-Type': 'application/json',
         },
         method: 'POST',
-      }
+      },
     );
 
     if (response.status >= 400) {

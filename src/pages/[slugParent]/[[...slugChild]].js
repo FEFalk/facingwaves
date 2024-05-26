@@ -87,9 +87,7 @@ export default function Page({ page, breadcrumbs }) {
                   {children.map((child) => {
                     return (
                       <li key={child.id}>
-                        <Link href={child.uri}>
-                          {child.title}
-                        </Link>
+                        <Link href={child.uri}>{child.title}</Link>
                       </li>
                     );
                   })}

@@ -41,18 +41,14 @@ const Metadata = ({ className, author, date, categories, options = DEFAULT_METAD
       )}
       {date && (
         <li>
-          <time pubdate="pubdate" dateTime={date}>
-            {formatDate(date)}
-          </time>
+          <time dateTime={date}>{formatDate(date)}</time>
         </li>
       )}
       {Array.isArray(categories) && categories[0] && (
         <li className={styles.metadataCategories}>
           {compactCategories && (
             <p title={categories.map(({ name }) => name).join(', ')}>
-              <Link href={categoryPathBySlug(categories[0].slug)}>
-                {categories[0].name}
-              </Link>
+              <Link href={categoryPathBySlug(categories[0].slug)}>{categories[0].name}</Link>
               {categories.length > 1 && ' and more'}
             </p>
           )}
@@ -61,9 +57,7 @@ const Metadata = ({ className, author, date, categories, options = DEFAULT_METAD
               {categories.map((category) => {
                 return (
                   <li key={category.slug}>
-                    <Link href={categoryPathBySlug(category.slug)}>
-                      {category.name}
-                    </Link>
+                    <Link href={categoryPathBySlug(category.slug)}>{category.name}</Link>
                   </li>
                 );
               })}

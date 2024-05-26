@@ -19,9 +19,7 @@ export default function Custom404() {
           <h1>Page Not Found</h1>
           <span>The page you were looking for could not be found.</span>
           <p>
-            <Link href="/">
-              Go back home
-            </Link>
+            <Link href="/">Go back home</Link>
           </p>
         </Container>
       </Section>

@@ -2,7 +2,7 @@ import ClassName from 'models/classname';
 import styles from './Releases.module.scss';
 import SongTeaser from 'components/SongTeaser';
 
-import { easeIn, easeInOut, motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 const Releases = ({ songs, className }) => {
